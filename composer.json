@@ -2,9 +2,7 @@
     "description": "BetterEmbed integration for Neos CMS",
     "type": "neos-package",
     "name": "betterembed/neos-embed",
-    "license": {
-       "GPL-3.0-or-later"
-    },
+    "license": "GPL-3.0-or-later",
     "require": {
         "neos/neos": "^4",
         "guzzlehttp/guzzle": "^6.3"
