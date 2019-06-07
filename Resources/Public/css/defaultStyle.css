@@ -33,7 +33,7 @@
     text-transform: uppercase;
     font-weight: bold;
     margin-bottom: 10px;
-    color: red;
+    color: #eaeaea;
 }
 .social-feed-item__media {
     -webkit-transform: translate3d(-10px, -10px, 0);
