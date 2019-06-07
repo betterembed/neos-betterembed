@@ -13,7 +13,7 @@ YouTube videos, twitter and facebook posts, blog posts or any other kind of remo
 
 Add the dependency to your site package like this
 
-    composer require --no-update ds/neos-betterembed
+    composer require --no-update betterembed/neos-embed 
     
 And then run `composer update` in your projects root folder.
 
