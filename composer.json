@@ -1,0 +1,19 @@
+{
+    "description": "BetterEmbed integration for Neos CMS",
+    "type": "neos-package",
+    "name": "betterembed/neos-embed",
+    "require": {
+        "neos/neos": "^4",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "BetterEmbed\\NeosEmbed\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "BetterEmbed.NeosEmbed"
+        }
+    }
+}

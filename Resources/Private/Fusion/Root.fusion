@@ -1,0 +1,69 @@
+include: Component/**/*
+
+prototype(Neos.Neos:Page) {
+    head {
+        stylesheets {
+            betterEmbed = Neos.Fusion:Tag {
+                tagName = 'link'
+                attributes {
+                    rel="stylesheet"
+                    href = Neos.Fusion:ResourceUri {
+                        path = 'resource://BetterEmbed.NeosEmbed/Public/css/defaultStyle.css'
+                    }
+                }
+            }
+
+            betterEmbedPlaceholder = Neos.Fusion:Tag {
+                tagName = 'link'
+                attributes {
+                    rel="stylesheet"
+                    href = Neos.Fusion:ResourceUri {
+                        path = 'resource://BetterEmbed.NeosEmbed/Public/css/embed.css'
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+prototype(BetterEmbed.NeosEmbed:Item) < prototype(Neos.Neos:ContentComponent) {
+
+    url = ${q(node.properties.record).property('url')}
+    title = ${q(node.properties.record).property('title')}
+    body = ${q(node.properties.record).property('body')}
+    thumbnailUrl = ${q(node.properties.record).property('thumbnailUrl')}
+    identifier = ${'embed-form-' + q(node).property('_identifier')}
+    datePublished = ${q(node.properties.record).property('publishedAt')}
+    itemType = ${q(node.properties.record).property('itemType')}
+
+    renderer = Neos.Fusion:Case {
+        isset {
+            condition = ${node.properties.record != null}
+            renderer = BetterEmbed.NeosEmbed:ComponentRenderer
+        }
+
+        backend {
+            condition = ${node.context.inBackend}
+            renderer = Neos.Fusion:Join {
+                message =  afx`
+                    <div class="better-embed-placeholder">
+                        <div class="heading">Please set a url in the inspector panel</div>
+                    </div>
+                `
+            }
+
+        }
+    }
+}
+
+prototype(BetterEmbed.NeosEmbed:ComponentRenderer) < prototype(Neos.Fusion:Case) {
+    default {
+        condition = true
+        renderer = BetterEmbed.NeosEmbed:Component.Default {
+            @apply.props = ${props}
+        }
+    }
+}
+
+

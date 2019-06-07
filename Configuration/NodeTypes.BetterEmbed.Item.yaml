@@ -1,0 +1,34 @@
+BetterEmbed.NeosEmbed:Item:
+  abstract: false
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: Better Embed
+    icon: plus
+    group: general
+    inlineEditable: true
+    inspector:
+      groups:
+        settings:
+          label: Settings
+          position: 4
+          icon: 'icon-gear'
+  properties:
+    url:
+      type: string
+      ui:
+        label: 'URL to embed'
+        reloadPageIfChanged: true
+        inspector:
+          group: 'settings'
+    record:
+      type: reference
+      ui:
+        label: 'Better Embed Record'
+        reloadPageIfChanged: true
+        inspector:
+          #group: 'settings'
+          editorOptions:
+            startingPoint: '/embeds'
+            nodeTypes: ['BetterEmbed.NeosEmbed:Record']
+

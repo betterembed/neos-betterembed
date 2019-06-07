@@ -1,0 +1,38 @@
+BetterEmbed.NeosEmbed:Record:
+  abstract: true
+  superTypes:
+    'Neos.Neos:Document': true
+  properties:
+    url:
+      type: string
+      defaultValue: ''
+    itemType:
+      type: string
+      defaultValue: ''
+    title:
+      type: string
+      defaultValue: ''
+    body:
+      type: string
+      defaultValue: ''
+    thumbnailUrl:
+      type: string
+      defaultValue: ''
+    thumbnailContentType:
+      type: string
+      defaultValue: ''
+    thumbnailContent:
+      type: string
+      defaultValue: ''
+    embedHtml:
+      type: string
+      defaultValue: ''
+    authorName:
+      type: string
+      defaultValue: ''
+    authorUrl:
+      type: string
+      defaultValue: ''
+    publishedAt:
+      type: DateTime
+      defaultValue: 'today midnight'
