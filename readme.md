@@ -81,7 +81,7 @@ The package is based on the BetterEmbed API endpoint.
 you can read the API description [here](https://api.betterembed.com/swagger/index.html) and test urls.
 
 ## Beta Release
-Please note that this is currenty a beta release. If you find any issues pls report them or create PR - thx!
+Please note that this is currently a beta release. If you find any issues pls report them or create PR - thx!
 
 
 
