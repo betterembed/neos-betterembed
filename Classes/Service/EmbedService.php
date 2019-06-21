@@ -131,6 +131,7 @@ class EmbedService {
         $nodeTemplate->setProperty('embedHtml', $record->getEmbedHtml());
         $nodeTemplate->setProperty('authorName', $record->getAuthorName());
         $nodeTemplate->setProperty('authorUrl', $record->getAuthorUrl());
+        $nodeTemplate->setProperty('authorImage', $record->getAuthorImage());
         $nodeTemplate->setProperty('publishedAt', $record->getPublishedAt());
 
         /** @var NodeInterface $node */

@@ -30,6 +30,9 @@ BetterEmbed.NeosEmbed:Record:
     authorName:
       type: string
       defaultValue: ''
+    authorImage:
+      type: string
+      defaultValue: ''
     authorUrl:
       type: string
       defaultValue: ''

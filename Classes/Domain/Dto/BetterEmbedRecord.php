@@ -54,6 +54,11 @@ class BetterEmbedRecord {
     private $authorUrl;
 
     /**
+     * @var string
+     */
+    private $authorImage;
+
+    /**
      * @var \DateTime
      */
     private $publishedAt;
@@ -74,6 +79,7 @@ class BetterEmbedRecord {
         $this->embedHtml = isset($object->embedHtml) ? $object->embedHtml : '';
         $this->authorName = isset($object->authorName) ? $object->authorName : '';
         $this->authorUrl = isset($object->authorUrl) ? $object->authorUrl : '';
+        $this->authorImage = isset($object->authorImage) ? $object->authorImage : '';
         $this->publishedAt = isset($object->publishedAt) ? new \DateTime($object->publishedAt) : null;
     }
 
@@ -235,6 +241,22 @@ class BetterEmbedRecord {
     public function setAuthorUrl(string $authorUrl): void
     {
         $this->authorUrl = $authorUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorImage(): string
+    {
+        return $this->authorImage;
+    }
+
+    /**
+     * @param string $authorImage
+     */
+    public function setAuthorImage(string $authorImage): void
+    {
+        $this->authorImage = $authorImage;
     }
 
     /**
