@@ -29,13 +29,19 @@ prototype(Neos.Neos:Page) {
 
 prototype(BetterEmbed.NeosEmbed:Item) < prototype(Neos.Neos:ContentComponent) {
 
-    url = ${q(node.properties.record).property('url')}
-    title = ${q(node.properties.record).property('title')}
-    body = ${q(node.properties.record).property('body')}
-    thumbnailUrl = ${q(node.properties.record).property('thumbnailUrl')}
-    identifier = ${'embed-form-' + q(node).property('_identifier')}
-    datePublished = ${q(node.properties.record).property('publishedAt')}
-    itemType = ${q(node.properties.record).property('itemType')}
+    identifier              = ${'embed-form-' + q(node).property('_identifier')}
+    titel                   = ${q(node.properties.record).property('title')}
+    url                     = ${q(node.properties.record).property('url')}
+    thumbnailUrl            = ${q(node.properties.record).property('thumbnailUrl')}
+    thumbnailContentType    = ${q(node.properties.record).property('thumbnailContentType')}
+    thumbnailContent        = ${q(node.properties.record).property('thumbnailContent')}
+    embedHtml               = ${q(node.properties.record).property('embedHtml')}
+    body                    = ${q(node.properties.record).property('body')}
+    datePublished           = ${q(node.properties.record).property('publishedAt')}
+    authorName              = ${q(node.properties.record).property('authorName')}
+    authorImage             = ${q(node.properties.record).property('authorImage')}
+    authorUrl               = ${q(node.properties.record).property('authorUrl')}
+    itemType                = ${q(node.properties.record).property('itemType')}
 
     renderer = Neos.Fusion:Case {
         isset {

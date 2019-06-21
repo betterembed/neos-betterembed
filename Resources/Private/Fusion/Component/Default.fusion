@@ -1,55 +1,70 @@
 prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Component) {
 
     titel = null
+    url = null
     thumbnailUrl = null
     body = null
     datePublished = null
     authorName = null
     authorImage = null
+    authorUrl = null
     itemType = null
 
     renderer = afx`
         <BetterEmbed.NeosEmbed:Component.Default.Tag itemType={props.itemType}>
-            <div class="social-feed-item__body">
-              <div @if.render={props.thumbnailUrl} class="social-feed-item__media">
-                <img class="attachment" src={props.thumbnailUrl}/>
+          <div class="betterembed__item">
+            <header>
+              <h3 class="betterembed__network">{props.itemType}</h3>
+            </header>
+            <div class="betterembed__body">
+              <div @if.render={props.thumbnailUrl} class="betterembed__media">
+                <img src={props.thumbnailUrl} alt="embed image"/>
               </div>
-              <div class="social-feed-item__text">
-                {props.title}
-                {props.body}
+              <h3 @if.render={props.title} class="betterembed__title">{props.title}</h3>
+              <div class="betterembed__text">
+                {props.body} <a href={props.url} target="_blank" class="betterembed__read-more">read more</a>
               </div>
-              <footer class="social-feed-item__footer">
-                <img @if.render={props.authorImage} class="social-feed-item__author-image" src="https://graph.facebook.com/163840960332740/picture" />
-                <a @if.render={props.authorName} class="social-feed-item__author-name" href="http://facebook.com/163840960332740" target="_blank">netidee</a>
-                <span @if.render={props.datePublished}>{Date.format(props.datePublished, 'd.m.Y')}</span>
+              <footer class="betterembed__footer">
+                <span @if.render={props.authorName} class="betterembed__author">
+                  <a href={props.authorUrl} target="_blank">{props.authorName}</a>
+                </span>
+                <span @if.render={props.datePublished}> {Date.format(props.datePublished, 'd.m.Y')}</span>
               </footer>
             </div>
+          </div>
         </BetterEmbed.NeosEmbed:Component.Default.Tag>
     `
 }
 
+prototype(BetterEmbed.NeosEmbed:Component.Default.Schema) < prototype(Neos.Fusion:Tag) {
+    tagName = ''
+}
+
 prototype(BetterEmbed.NeosEmbed:Component.Default.Tag) < prototype(Neos.Fusion:Tag) {
     @context.itemType = ${this.itemType}
-    @context.defaultClass = 'social-feed-item'
+    @context.defaultClass = 'betterembed'
+
+    tagName = 'article'
+    
     attributes.class = Neos.Fusion:Case {
         twitter {
             condition = ${itemType == 'Twitter'}
-            renderer = ${defaultClass + ' social-feed-item--twitter'}
+            renderer = ${defaultClass + ' betterembed--twitter'}
         }
 
         youtube {
             condition = ${itemType == 'YouTube'}
-            renderer = ${defaultClass + ' social-feed-item--youtube'}
+            renderer = ${defaultClass + ' betterembed--youtube'}
         }
 
         facebook {
             condition = ${itemType == 'Facebook'}
-            renderer = ${defaultClass + ' social-feed-item--facebook'}
+            renderer = ${defaultClass + ' betterembed--facebook'}
         }
 
         github {
             condition = ${itemType == 'GitHub'}
-            renderer = ${defaultClass + ' social-feed-item--github'}
+            renderer = ${defaultClass + ' betterembed--github'}
         }
 
         default {
