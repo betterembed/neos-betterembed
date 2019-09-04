@@ -1,7 +1,9 @@
 BetterEmbed.NeosEmbed:Record:
-  abstract: true
+  abstract: false
   superTypes:
     'Neos.Neos:Document': true
+  ui:
+    inlineEditable: true
   properties:
     url:
       type: string

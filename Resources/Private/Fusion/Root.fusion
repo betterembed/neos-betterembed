@@ -61,6 +61,22 @@ prototype(BetterEmbed.NeosEmbed:Item) < prototype(Neos.Neos:ContentComponent) {
 
         }
     }
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            node = ${node}
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(node)}
+            2 = ${Neos.Caching.nodeTypeTag('BetterEmbed.NeosEmbed:Record', node)}
+        }
+    }
+
+    @process.fix = Neos.Neos:ContentElementWrapping {
+        node = ${node.properties.record ? node.properties.record : node}
+        @position = 'end'
+    }
 }
 
 prototype(BetterEmbed.NeosEmbed:ComponentRenderer) < prototype(Neos.Fusion:Case) {
