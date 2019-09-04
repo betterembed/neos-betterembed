@@ -133,6 +133,7 @@ class EmbedService {
         $nodeTemplate->setProperty('authorUrl', $record->getAuthorUrl());
         $nodeTemplate->setProperty('authorImage', $record->getAuthorImage());
         $nodeTemplate->setProperty('publishedAt', $record->getPublishedAt());
+        $nodeTemplate->setProperty('uriPathSegment', 'embed-' . random_int(0000000000,9999999999));
 
         /** @var NodeInterface $node */
         $node = $this->nodeService->findOrCreateBetterEmbedRootNode($this->context)->createNodeFromTemplate($nodeTemplate);
