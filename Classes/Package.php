@@ -17,5 +17,6 @@ class Package extends BasePackage
         $dispatcher = $bootstrap->getSignalSlotDispatcher();
 
         $dispatcher->connect(Node::class, 'nodeUpdated', EmbedService::class, 'nodeUpdated', false);
+        $dispatcher->connect(Node::class, 'nodeRemoved', EmbedService::class, 'nodeRemoved', false);
     }
 }

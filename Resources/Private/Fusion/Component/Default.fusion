@@ -3,35 +3,53 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
     titel = null
     url = null
     thumbnailUrl = null
+    thumbnail = null
     body = null
     datePublished = null
     authorName = null
     authorImage = null
     authorUrl = null
     itemType = null
+    embedHtml = null
+    msgClick = ${Configuration.setting('BetterEmbed.NeosEmbed.text.msgClick')}
+    msgGdpr = ${Configuration.setting('BetterEmbed.NeosEmbed.text.msgGdpr')}
+    labelOk = ${Configuration.setting('BetterEmbed.NeosEmbed.text.labelOk')}
+    labelCancel = ${Configuration.setting('BetterEmbed.NeosEmbed.text.labelCancel')}
 
     renderer = afx`
-        <BetterEmbed.NeosEmbed:Component.Default.Tag itemType={props.itemType}>
-          <div class="betterembed__item">
-            <header>
-              <h3 class="betterembed__network">{props.itemType}</h3>
-            </header>
-            <div class="betterembed__body">
-              <div @if.render={props.thumbnailUrl} class="betterembed__media">
-                <img src={props.thumbnailUrl} alt="embed image"/>
-              </div>
-              <h3 @if.render={props.title} class="betterembed__title">{props.title}</h3>
-              <div class="betterembed__text">
-                {props.body} <a href={props.url} target="_blank" class="betterembed__read-more">read more</a>
-              </div>
-              <footer class="betterembed__footer">
-                <span @if.render={props.authorName} class="betterembed__author">
-                  <a href={props.authorUrl} target="_blank">{props.authorName}</a>
-                </span>
-                <span @if.render={props.datePublished}> {Date.format(props.datePublished, 'd.m.Y')}</span>
-              </footer>
+        <BetterEmbed.NeosEmbed:Component.Default.Tag itemType={props.itemType} attributes.data-embed-html={Json.stringify(props.embedHtml)}>
+            <button type="button" class="betterembed__show-original-element js-betterembed-show-message"></button>
+            <div class="betterembed__item">
+                <header>
+                    <h3 class="betterembed__network">{props.itemType}</h3>
+                </header>
+                <div class="betterembed__body">
+                    <div class="betterembed__msg">
+                        <p>
+                            {props.msgClick}
+                        </p>
+                        <p @if.isset={props.msgGdpr}>
+                            <strong>{props.msgGdpr}</strong>
+                        </p>
+                        <a href="javascript:;" class="betterembed__msg-button-primary js-betterembed-load-remote">{props.labelOk}</a>
+                        <a href="javascript:;" class="betterembed__msg-button-secondary js-betterembed-close">{props.labelCancel}</a>
+                    </div>
+                    <div @if.render={props.thumbnailUrl} class="betterembed__media">
+                        <Neos.Neos:ImageTag  asset={props.thumbnail} alt="embed image"/>
+                    </div>
+                    <h3 @if.render={props.title} class="betterembed__title">{props.title}</h3>
+                    <div class="betterembed__text">
+                        {props.body} <a href={props.url} target="_blank" class="betterembed__read-more">read more</a>
+                    </div>
+                    <footer class="betterembed__footer">
+                        <span @if.render={props.authorName} class="betterembed__author">
+                          <a href={props.authorUrl} target="_blank">{props.authorName}</a>
+                        </span>
+                        <span @if.render={props.datePublished}> {Date.format(props.datePublished, 'd.m.Y')}</span>
+                    </footer>
+                </div>
             </div>
-          </div>
+            <div class="betterembed__embed"></div>
         </BetterEmbed.NeosEmbed:Component.Default.Tag>
     `
 }
@@ -42,7 +60,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Default.Schema) < prototype(Neos.Fusio
 
 prototype(BetterEmbed.NeosEmbed:Component.Default.Tag) < prototype(Neos.Fusion:Tag) {
     @context.itemType = ${this.itemType}
-    @context.defaultClass = 'betterembed'
+    @context.defaultClass = 'betterembed js-betterembed'
 
     tagName = 'article'
     

@@ -2,8 +2,8 @@ include: Component/**/*
 
 prototype(Neos.Neos:Page) {
     head {
-        stylesheets {
-            betterEmbed = Neos.Fusion:Tag {
+        betterEmbedCss = Neos.Fusion:Join {
+            css = Neos.Fusion:Tag {
                 tagName = 'link'
                 attributes {
                     rel="stylesheet"
@@ -12,8 +12,7 @@ prototype(Neos.Neos:Page) {
                     }
                 }
             }
-
-            betterEmbedPlaceholder = Neos.Fusion:Tag {
+            placeholder = Neos.Fusion:Tag {
                 tagName = 'link'
                 attributes {
                     rel="stylesheet"
@@ -22,16 +21,28 @@ prototype(Neos.Neos:Page) {
                     }
                 }
             }
+            js = Neos.Fusion:Tag {
+                tagName = 'script'
+                attributes {
+                    defer = ''
+                    type ="text/javascript"
+                    src = Neos.Fusion:ResourceUri {
+                        path = 'resource://BetterEmbed.NeosEmbed/Public/js/embed.js'
+                    }
+                }
+            }
         }
+        betterEmbedCss.@position = 'end'
+        betterEmbedCss.@if.render = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof BetterEmbed.NeosEmbed:Mixin.Include]').is() || q(documentNode).is('[instanceof BetterEmbed.NeosEmbed:Mixin.Include]')}
     }
 }
-
 
 prototype(BetterEmbed.NeosEmbed:Item) < prototype(Neos.Neos:ContentComponent) {
 
     identifier              = ${'embed-form-' + q(node).property('_identifier')}
     titel                   = ${q(node.properties.record).property('title')}
     url                     = ${q(node.properties.record).property('url')}
+    thumbnail               = ${q(node.properties.record).property('thumbnail')}
     thumbnailUrl            = ${q(node.properties.record).property('thumbnailUrl')}
     thumbnailContentType    = ${q(node.properties.record).property('thumbnailContentType')}
     thumbnailContent        = ${q(node.properties.record).property('thumbnailContent')}
@@ -73,10 +84,10 @@ prototype(BetterEmbed.NeosEmbed:Item) < prototype(Neos.Neos:ContentComponent) {
         }
     }
 
-    @process.fix = Neos.Neos:ContentElementWrapping {
-        node = ${node.properties.record ? node.properties.record : node}
-        @position = 'end'
-    }
+//    @process.fix = Neos.Neos:ContentElementWrapping {
+//        node = ${node.properties.record ? node.properties.record : node}
+//        @position = 'end'
+//    }
 }
 
 prototype(BetterEmbed.NeosEmbed:ComponentRenderer) < prototype(Neos.Fusion:Case) {

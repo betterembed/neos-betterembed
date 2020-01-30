@@ -5,11 +5,14 @@ use BetterEmbed\NeosEmbed\Domain\Repository\BetterEmbedRepository;
 use Neos\ContentRepository\Domain\Factory\NodeFactory;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\ContentRepository\Domain\Model\NodeTemplate;
+use Neos\ContentRepository\Domain\Repository\NodeDataRepository;
 use Neos\ContentRepository\Domain\Service\Context;
 use Neos\ContentRepository\Domain\Service\ContextFactoryInterface;
 use Neos\ContentRepository\Domain\Service\NodeTypeManager;
+use Neos\Eel\Exception;
 use Neos\Eel\FlowQuery\FlowQuery;
 use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Persistence\PersistenceManagerInterface;
 
 /**
  * @Flow\Scope("singleton")
@@ -42,9 +45,21 @@ class NodeService
     protected $nodeTypeManager;
 
     /**
+     * @Flow\Inject
+     * @var NodeDataRepository
+     */
+    protected $nodeDataRepository;
+
+    /**
      * @var NodeInterface
      */
     protected $betterEmbedRootNode;
+
+    /**
+     * @Flow\Inject
+     * @var PersistenceManagerInterface
+     */
+    protected $persistenceManager;
 
     /**
      * @param Context $context
@@ -81,8 +96,8 @@ class NodeService
     /**
      * @param NodeInterface $node
      * @param string $url
-     * @return NodeInterface
-     * @throws \Neos\Eel\Exception
+     * @return \Traversable
+     * @throws Exception
      */
     public function findRecordByUrl(NodeInterface $node, string $url) {
 
@@ -94,6 +109,13 @@ class NodeService
         return $result;
     }
 
+    public function removeEmbedNode(NodeInterface $node) {
+        $node->setRemoved(true);
+        if ($node->isRemoved()) {
+            $this->nodeDataRepository->remove($node);
+            return;
+        }
+    }
 
 
 }

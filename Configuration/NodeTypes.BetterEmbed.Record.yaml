@@ -4,6 +4,12 @@ BetterEmbed.NeosEmbed:Record:
     'Neos.Neos:Document': true
   ui:
     inlineEditable: true
+    inspector:
+      groups:
+        settings:
+          label: Settings
+          position: 4
+          icon: 'icon-gear'
   properties:
     url:
       type: string
@@ -26,6 +32,16 @@ BetterEmbed.NeosEmbed:Record:
     thumbnailContent:
       type: string
       defaultValue: ''
+    thumbnailSrc:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Thumbnail'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'settings'
+          editorOptions:
+            features:
+              crop: true
     embedHtml:
       type: string
       defaultValue: ''

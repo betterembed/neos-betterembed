@@ -3,8 +3,45 @@
 .betterembed {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 300;
     box-sizing: border-box;
     position: relative;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.betterembed.is-betterembed-msg-visible .betterembed__msg {
+    display: block;
+}
+.betterembed.is-betterembed-msg-visible .betterembed__show-original-element {
+    background-position: center right;
+}
+.betterembed.is-betterembed-remote-visible .betterembed__embed {
+    display: block;
+}
+.betterembed.is-betterembed-remote-visible .betterembed__item {
+    display: none;
+}
+.betterembed__show-original-element {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    cursor: pointer;
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/310306/betterembed-logo.png");
+    background-repeat: none;
+    background-position: center right;
+    background-size: 23px 23px;
+    background-repeat: no-repeat;
+    height: 30px;
+    padding-right: 30px;
+    display: block;
+    background-color: transparent;
+    border: none;
+}
+.betterembed__show-original-element:focus {
+    outline: none;
 }
 .betterembed__item {
     overflow: hidden;
@@ -17,10 +54,11 @@
     hyphens: auto;
     padding-right: 30px;
     margin: 0 0 10px 0;
+    -webkit-box-flex: 1;
     flex-grow: 1;
     text-transform: uppercase;
     font-weight: bold;
-    color: #cdcdcd;
+    color: #4c5559;
 }
 .betterembed__media img {
     width: 100%;
@@ -56,12 +94,50 @@
 .betterembed__read-more {
     color: #fff;
     font-size: 14px;
+    white-space: nowrap;
 }
 .betterembed__body {
-    background: #cdcdcd;
+    background: #4c5559;
     color: #fff;
     font-size: 20px;
     position: relative;
+}
+.betterembed__msg {
+    display: none;
+    font-size: 16px;
+    position: absolute;
+    padding: 20px;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.84);
+    color: white;
+    text-align: center;
+}
+.betterembed__msg p {
+    text-align: left;
+    margin: 0;
+}
+.betterembed__msg p:not(last-of-type) {
+    padding-bottom: 10px;
+}
+.betterembed__msg strong {
+    font-weight: 600;
+}
+.betterembed__msg-button-primary {
+    display: -webkit-inline-box;
+    display: inline-flex;
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px 20px;
+    color: black;
+}
+.betterembed__msg-button-secondary {
+    display: -webkit-inline-box;
+    display: inline-flex;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: white;
 }
 .betterembed__footer {
     margin: 0 15px;
@@ -78,37 +154,17 @@
 .betterembed__author a:hover {
     text-decoration: underline;
 }
-
-.betterembed--facebook .betterembed__network {
-    color: #306199;
+.betterembed__embed {
+    display: none;
+    padding-top: 30px;
 }
-.betterembed--facebook .betterembed__body {
-    background-color: #306199;
-}
-.betterembed--facebook[data-attachement=""] .betterembed__text {
-    background-color: #27507e;
-}
-
-.betterembed--twitter .betterembed__network {
-    color: #26c4f1;
-}
-.betterembed--twitter .betterembed__body {
-    background-color: #26c4f1;
-}
-.betterembed--twitter[data-attachement=""] .betterembed__text {
-    background-color: #0fb5e5;
+.betterembed__embed > * {
+    width: 100% !important;
+    overflow-x: none;
+    margin: 0;
+    padding: 0;
 }
 
-.betterembed--youtube .betterembed__network {
-    color: #df1c31;
-}
-.betterembed--youtube .betterembed__body {
-    background-color: #df1c31;
-}
-
-.betterembed--github .betterembed__network {
-    color: #444;
-}
-.betterembed--github .betterembed__body {
-    background-color: #444;
+.betterembed__embed > iframe {
+    width: 100%;
 }
