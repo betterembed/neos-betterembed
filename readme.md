@@ -9,6 +9,8 @@ YouTube videos, twitter and facebook posts, blog posts or any other kind of remo
 - improve privacy by keeping out unwanted tracking cookies (GDPR)
 - increase page speed by not loading external javascript and css resources
 
+If you want to know more pls visit https://www.acolono.com/betterembed to see the full feature list and get more information about the project.
+
 ## Installation
 
 Add the dependency to your site package like this
