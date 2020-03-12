@@ -35,7 +35,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
                         <a href="javascript:;" class="betterembed__msg-button-secondary js-betterembed-close">{props.labelCancel}</a>
                     </div>
                     <div @if.render={props.thumbnailUrl} class="betterembed__media">
-                        <Neos.Neos:ImageTag  asset={props.thumbnail} alt="embed image"/>
+                        <Neos.Neos:ImageTag asset={props.thumbnail} alt="embed image"/>
                     </div>
                     <h3 @if.render={props.title} class="betterembed__title">{props.title}</h3>
                     <div class="betterembed__text">
