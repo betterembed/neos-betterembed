@@ -13,6 +13,8 @@ prototype(BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag) < prototype(Neos
             @apply.spread = ${props}
         }
         content = ${props.content}
-        content.@process.convertToFinalUri = Neos.Neos:ConvertUris
+        content.@process.convertToFinalUri = Neos.Neos:ConvertUris {
+            force = true
+        }
     }
 }
