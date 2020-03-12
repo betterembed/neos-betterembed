@@ -4,7 +4,7 @@
     "name": "betterembed/neos-betterembed",
     "license": "GPL-3.0-or-later",
     "require": {
-        "neos/neos": "^4 || ^5",
+        "neos/neos": "^4.3 || ^5",
         "guzzlehttp/guzzle": "^6.3"
     },
     "autoload": {
