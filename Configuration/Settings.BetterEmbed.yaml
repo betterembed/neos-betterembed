@@ -1,9 +1,3 @@
-Neos:
-  Neos:
-    fusion:
-      autoInclude:
-        BetterEmbed.NeosEmbed: true
-
 BetterEmbed:
   NeosEmbed:
     text:

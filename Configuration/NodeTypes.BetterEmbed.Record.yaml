@@ -1,15 +1,6 @@
-BetterEmbed.NeosEmbed:Record:
-  abstract: false
+'BetterEmbed.NeosEmbed:Record':
   superTypes:
     'Neos.Neos:Document': true
-  ui:
-    inlineEditable: true
-    inspector:
-      groups:
-        settings:
-          label: Settings
-          position: 4
-          icon: 'icon-gear'
   properties:
     url:
       type: string

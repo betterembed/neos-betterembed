@@ -1,0 +1,6 @@
+prototype(BetterEmbed.NeosEmbed:Content.Item) < prototype(Neos.Neos:ContentComponent) {
+
+    renderer = afx`
+        <BetterEmbed.NeosEmbed:Component.Item {...props} />
+    `
+}
