@@ -53,22 +53,3 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
         </BetterEmbed.NeosEmbed:Component.Default.Tag>
     `
 }
-
-prototype(BetterEmbed.NeosEmbed:Component.Default.Tag) < prototype(Neos.Fusion:Component) {
-    tagName = 'article'
-    itemType = null
-    content = null
-
-    @if.shouldRender = ${this.tagName && this.itemType && this.content}
-
-    renderer = Neos.Fusion:Tag {
-        tagName = ${props.tagName}
-        attributes {
-            class = ${['js-betterembed', 'betterembed', props.itemType ? String.toLowerCase('betterembed--' + props.itemType) : null]}
-            @ignoreProperties=${['tagName','itemType','content']}
-            @apply.spread = ${props}
-        }
-        content = ${props.content}
-        content.@process.convertToFinalUri = Neos.Neos:ConvertUris
-    }
-}
