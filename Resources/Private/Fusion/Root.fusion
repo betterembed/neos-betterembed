@@ -56,24 +56,14 @@ prototype(BetterEmbed.NeosEmbed:Item) < prototype(Neos.Neos:ContentComponent) {
     authorUrl               = ${q(this.recordNode).property('authorUrl')}
     itemType                = ${q(this.recordNode).property('itemType')}
 
-    renderer = Neos.Fusion:Case {
-        isset {
-            condition = ${node.properties.record != null}
-            renderer = BetterEmbed.NeosEmbed:ComponentRenderer
-        }
+    @if.hasRecordOrInBackend = ${this.recordNode || node.context.inBackend}
 
-        backend {
-            condition = ${node.context.inBackend}
-            renderer = Neos.Fusion:Join {
-                message =  afx`
-                    <div class="better-embed-placeholder">
-                        <div class="heading">Please set a url in the inspector panel</div>
-                    </div>
-                `
-            }
-
-        }
-    }
+    renderer = afx`
+        <BetterEmbed.NeosEmbed:ComponentRenderer @if.set={props.recordNode} />
+        <div class="better-embed-placeholder" @if.notSet={!props.recordNode}>
+            <div class="heading">Please set a url in the inspector panel</div>
+        </div>
+    `
 
     @cache {
         mode = 'cached'
@@ -85,11 +75,6 @@ prototype(BetterEmbed.NeosEmbed:Item) < prototype(Neos.Neos:ContentComponent) {
             2 = ${Neos.Caching.nodeTypeTag('BetterEmbed.NeosEmbed:Record', node)}
         }
     }
-
-//    @process.fix = Neos.Neos:ContentElementWrapping {
-//        node = ${node.properties.record ? node.properties.record : node}
-//        @position = 'end'
-//    }
 }
 
 prototype(BetterEmbed.NeosEmbed:ComponentRenderer) < prototype(Neos.Fusion:Case) {
