@@ -1,6 +1,6 @@
 {
     "description": "BetterEmbed integration for Neos CMS",
-    "type": "neos-package",
+    "type": "neos-plugin",
     "name": "betterembed/neos-betterembed",
     "license": "GPL-3.0-or-later",
     "require": {
