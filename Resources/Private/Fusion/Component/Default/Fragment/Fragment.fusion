@@ -1,4 +1,4 @@
-prototype(BetterEmbed.NeosEmbed:Component.Default.Tag) < prototype(Neos.Fusion:Component) {
+prototype(BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag) < prototype(Neos.Fusion:Component) {
     tagName = 'article'
     itemType = null
     content = null
@@ -9,7 +9,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Default.Tag) < prototype(Neos.Fusion:C
         tagName = ${props.tagName}
         attributes {
             class = ${['js-betterembed', 'betterembed', props.itemType ? String.toLowerCase('betterembed--' + props.itemType) : null]}
-            @ignoreProperties=${['tagName','itemType','content']}
+            @ignoreProperties = ${['tagName','itemType','content']}
             @apply.spread = ${props}
         }
         content = ${props.content}

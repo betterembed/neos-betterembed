@@ -86,12 +86,10 @@ class EmbedService {
      * @throws NodeException
      * @throws NodeTypeNotFoundException
      */
-    public function nodeUpdated(NodeInterface $node, Workspace $targetWorkspace = null): void
+    public function nodeUpdated(NodeInterface $node): void
     {
 
-        $nodeType = $node->getNodeType()->getName();
-
-        if ($nodeType === 'BetterEmbed.NeosEmbed:Item') {
+        if ($node->getNodeType()->isOfType('BetterEmbed.NeosEmbed:Mixin.Item')) {
             $url = $node->getProperty('url');
 
             if (!empty($url)) {
@@ -109,12 +107,10 @@ class EmbedService {
      * @throws NodeException
      * @throws NodeTypeNotFoundException
      */
-    public function nodeRemoved(NodeInterface $node, Workspace $targetWorkspace = null): void
+    public function nodeRemoved(NodeInterface $node): void
     {
 
-        $nodeType = $node->getNodeType()->getName();
-
-        if ($nodeType === 'BetterEmbed.NeosEmbed:Item') {
+        if ($node->getNodeType()->isOfType('BetterEmbed.NeosEmbed:Mixin.Item')) {
             $url = $node->getProperty('url');
 
             if (!empty($url)) {

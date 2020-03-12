@@ -1,8 +1,6 @@
-prototype(BetterEmbed.NeosEmbed:ComponentRenderer) < prototype(Neos.Fusion:Case) {
+prototype(BetterEmbed.NeosEmbed:Component.Renderer) < prototype(Neos.Fusion:Case) {
     default {
         condition = true
-        renderer = BetterEmbed.NeosEmbed:Component.Default {
-            @apply.props = ${props}
-        }
+        renderer = afx`<BetterEmbed.NeosEmbed:Component.Default {...props} />`
     }
 }

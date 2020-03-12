@@ -1,0 +1,7 @@
+'BetterEmbed.NeosEmbed:Content.Item':
+  superTypes:
+    'Neos.Neos:Content': true
+    'BetterEmbed.NeosEmbed:Mixin.Item': true
+  ui:
+    label: Better Embed
+    icon: plus

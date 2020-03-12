@@ -17,7 +17,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
     labelCancel = ${Configuration.setting('BetterEmbed.NeosEmbed.text.labelCancel')}
 
     renderer = afx`
-        <BetterEmbed.NeosEmbed:Component.Default.Tag itemType={props.itemType} data-embed-html={Json.stringify(props.embedHtml)}>
+        <BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag itemType={props.itemType} data-embed-html={Json.stringify(props.embedHtml)}>
             <button type="button" class="betterembed__show-original-element js-betterembed-show-message"></button>
             <div class="betterembed__item">
                 <header>
@@ -31,8 +31,8 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
                         <p @if.isset={props.msgGdpr}>
                             <strong>{props.msgGdpr}</strong>
                         </p>
-                        <a href="javascript:;" class="betterembed__msg-button-primary js-betterembed-load-remote">{props.labelOk}</a>
-                        <a href="javascript:;" class="betterembed__msg-button-secondary js-betterembed-close">{props.labelCancel}</a>
+                        <button type="button" class="betterembed__msg-button-primary js-betterembed-load-remote">{props.labelOk}</button>
+                        <button type="button" class="betterembed__msg-button-secondary js-betterembed-close">{props.labelCancel}</button>
                     </div>
                     <div @if.render={props.thumbnailUrl} class="betterembed__media">
                         <Neos.Neos:ImageTag asset={props.thumbnail} alt="embed image"/>
@@ -50,6 +50,6 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
                 </div>
             </div>
             <div class="betterembed__embed"></div>
-        </BetterEmbed.NeosEmbed:Component.Default.Tag>
+        </BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag>
     `
 }

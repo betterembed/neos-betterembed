@@ -1,4 +1,0 @@
-BetterEmbed.NeosEmbed:Mixin.Content:
-  superTypes:
-    'Neos.Neos:Content': true
-    'BetterEmbed.NeosEmbed:Mixin.Include': true

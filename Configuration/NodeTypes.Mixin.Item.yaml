@@ -1,18 +1,14 @@
-BetterEmbed.NeosEmbed:Item:
-  abstract: false
+'BetterEmbed.NeosEmbed:Mixin.Item':
+  abstract: true
   superTypes:
-    'BetterEmbed.NeosEmbed:Mixin.Content': true
+    'BetterEmbed.NeosEmbed:Mixin.Include': true
   ui:
-    label: Better Embed
-    icon: plus
-    group: general
     inlineEditable: true
     inspector:
       groups:
         settings:
           label: Settings
-          position: 4
-          icon: 'icon-gear'
+          icon: gear
   properties:
     url:
       type: string
@@ -20,15 +16,13 @@ BetterEmbed.NeosEmbed:Item:
         label: 'URL to embed'
         reloadPageIfChanged: true
         inspector:
-          group: 'settings'
+          group: settings
     record:
       type: reference
       ui:
         label: 'Better Embed Record'
         reloadPageIfChanged: true
         inspector:
-          #group: 'settings'
           editorOptions:
             startingPoint: '/embeds'
-            nodeTypes: ['BetterEmbed.NeosEmbed:Record']
-
+            nodeTypes: ['BetterEmbed.NeosEmbed:Document.Record']
