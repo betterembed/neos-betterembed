@@ -66,20 +66,21 @@ class BetterEmbedRecord {
     /**
      * BetterEmbedRecord constructor.
      * @param $object
+     * @throws \Exception
      */
     public function __construct($object)
     {
         $this->url = $object->url;
         $this->itemType = $object->itemType;
-        $this->title = $object->title;
-        $this->body = $object->body;
-        $this->thumbnailUrl = isset($object->thumbnailUrl) ? $object->thumbnailUrl : '';
-        $this->thumbnailContentType = isset($object->thumbnailContentType) ? $object->thumbnailContentTyp : '';
-        $this->thumbnailContent = isset($object->thumbnailContent) ? $object->thumbnailContent : '';
-        $this->embedHtml = isset($object->embedHtml) ? $object->embedHtml : '';
-        $this->authorName = isset($object->authorName) ? $object->authorName : '';
-        $this->authorUrl = isset($object->authorUrl) ? $object->authorUrl : '';
-        $this->authorImage = isset($object->authorImage) ? $object->authorImage : '';
+        $this->title = $object->title ?? '';
+        $this->body = $object->body ?? '';
+        $this->thumbnailUrl = $object->thumbnailUrl ?? '';
+        $this->thumbnailContentType = $object->thumbnailContentType ?? '';
+        $this->thumbnailContent = $object->thumbnailContent ?? '';
+        $this->embedHtml = $object->embedHtml ?? '';
+        $this->authorName = $object->authorName ?? '';
+        $this->authorUrl = $object->authorUrl ?? '';
+        $this->authorImage = $object->authorImage ?? '';
         $this->publishedAt = isset($object->publishedAt) ? new \DateTime($object->publishedAt) : null;
     }
 

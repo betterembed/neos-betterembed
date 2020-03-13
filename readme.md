@@ -113,5 +113,8 @@ you can read the API description [here](https://api.betterembed.com/swagger/inde
 ## Beta Release
 Please note that this is currently a beta release. If you find any issues pls report them or create PR - thx!
 
+## Issues and PRs
+Feel free to create issues for PRs if you like.
+
 
 
