@@ -11,5 +11,5 @@ use Neos\ContentRepository\Domain\Repository\NodeDataRepository;
 class BetterEmbedRepository extends NodeDataRepository
 {
     const ENTITY_CLASSNAME = NodeData::class;
-    const BETTER_EMBED_ROOT_NODE_NAME = 'embeds';
+    const BETTER_EMBED_ROOT_NODE_NAME = 'better-embeds';
 }
