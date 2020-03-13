@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="BetterEmbed.NeosEmbed" source-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="properties.url" xml:space="preserve">
+                <source>URL der Webseite</source>
+            </trans-unit>
+            <trans-unit id="properties.url.ui.help.message" xml:space="preserve">
+                <source>Sie können jede Art von URL eintragen. Zum Beispiel Youtube, Twitter oder jede andere Website, die Sie wollen.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

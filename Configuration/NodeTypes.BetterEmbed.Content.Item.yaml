@@ -5,3 +5,5 @@
   ui:
     label: Better Embed
     icon: plus
+    help:
+      message: 'i18n'

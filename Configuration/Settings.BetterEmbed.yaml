@@ -1,7 +1,9 @@
 BetterEmbed:
   NeosEmbed:
-    text:
-      msgClick: 'With a click on the link below, the original content will be loaded. This can include remote content and you can possibly be tracked from the original provider.'
-      mdgGdpr: 'Text should be adopted for your GDPR needs'
-      labelOk: 'show original content'
-      labelCancel: 'close'
+    translationKeys:
+      placeholder: 'BetterEmbed.NeosEmbed:Main:placeholder.message'
+      msgClick: 'BetterEmbed.NeosEmbed:Main:text.msgClick'
+      msgGdpr: 'BetterEmbed.NeosEmbed:Main:text.msgGdpr'
+      labelOk: 'BetterEmbed.NeosEmbed:Main:text.labelOk'
+      labelCancel: 'BetterEmbed.NeosEmbed:Main:text.labelCancel'
+      readMore: 'BetterEmbed.NeosEmbed:Main:text.readMore'

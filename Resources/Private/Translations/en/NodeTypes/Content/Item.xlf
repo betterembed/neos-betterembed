@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="BetterEmbed.NeosEmbed" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="ui.help.message" xml:space="preserve">
+                <source>With BetterEmbed you can display a teaser of any web content you like by just providing the URL for it. For instance, you can display Youtube videos or Twitter posts without being tracked and loading of external resources.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

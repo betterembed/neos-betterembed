@@ -13,10 +13,12 @@
     url:
       type: string
       ui:
-        label: 'URL to embed'
+        label: 'i18n'
         reloadPageIfChanged: true
         inspector:
           group: settings
+        help:
+          message: 'i18n'
     record:
       type: reference
       ui:

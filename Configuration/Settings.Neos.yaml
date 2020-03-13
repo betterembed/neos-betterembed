@@ -3,3 +3,9 @@ Neos:
     fusion:
       autoInclude:
         BetterEmbed.NeosEmbed: true
+    userInterface:
+      translation:
+        autoInclude:
+          BetterEmbed.NeosEmbed:
+            - 'Main'
+            - 'NodeTypes/*'

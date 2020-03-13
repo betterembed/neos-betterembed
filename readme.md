@@ -78,6 +78,34 @@ prototype(BetterEmbed.NeosEmbed:ComponentRenderer) < prototype(Neos.Fusion:Case)
 }
 ```
 
+## Rendering
+The package provides some essential translations for English and German. We highly recommend adapting does translations to your needs.
+### Use your own translations
+The easiest way to use your own translations is: 
+ - copy `BetterEmbed.NeosEmbed/Resources/Private/Translations/[lang]/Main.xlf` to your site package.
+ - setup translations in your site package
+    ```$yaml
+    Neos:
+      Neos:
+        userInterface:
+          translation:
+            autoInclude:
+              Your.SitePackage:
+                - 'Main'
+    ``` 
+ - adjust `BetterEmbed.NeosEmbed` to use your own translations
+    ```$yaml
+    BetterEmbed:
+      NeosEmbed:
+        translationKeys:
+          placeholder: 'Your.SitePackage:Main:placeholder.message'
+          msgClick: 'Your.SitePackage:Main:text.msgClick'
+          msgGdpr: 'Your.SitePackage:Main:text.msgGdpr'
+          labelOk: 'Your.SitePackage:Main:text.labelOk'
+          labelCancel: 'Your.SitePackage:Main:text.labelCancel'
+          readMore: 'Your.SitePackage:Main:text.readMore'
+    ```   
+
 ## API
 The package is based on the BetterEmbed API endpoint.
 you can read the API description [here](https://api.betterembed.com/swagger/index.html) and test urls.

@@ -16,12 +16,14 @@ prototype(BetterEmbed.NeosEmbed:Component.Item) < prototype(Neos.Fusion:Componen
     authorUrl               = ${q(this.recordNode).property('authorUrl')}
     itemType                = ${q(this.recordNode).property('itemType')}
 
+    placeholder = ${I18n.translate(Configuration.setting('BetterEmbed.NeosEmbed.translationKeys.placeholder'))}
+
     @if.hasRecordOrInBackend = ${this.recordNode || node.context.inBackend}
 
     renderer = afx`
         <BetterEmbed.NeosEmbed:Component.Renderer @if.set={props.recordNode} @key='renderer' />
         <div class='better-embed-placeholder' @if.notSet={!props.recordNode} @key='placeholder'>
-            <div class='heading'>Please set a url in the inspector panel</div>
+            <div class='heading'>{props.placeholder}</div>
         </div>
     `
 
