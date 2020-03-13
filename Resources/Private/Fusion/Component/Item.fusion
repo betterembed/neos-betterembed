@@ -34,7 +34,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Item) < prototype(Neos.Fusion:Componen
         }
         entryTags {
             1 = ${Neos.Caching.nodeTag(node)}
-            2 = ${Neos.Caching.nodeTypeTag('BetterEmbed.NeosEmbed:Document.Record', node)}
+            2 = ${Neos.Caching.nodeTypeTag('BetterEmbed.NeosEmbed:Record', node)}
         }
     }
 }
