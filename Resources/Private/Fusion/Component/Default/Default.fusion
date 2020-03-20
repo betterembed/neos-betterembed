@@ -13,11 +13,16 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
     embedHtml = null
 
     modifier = null
-    msgClick = ${I18n.translate(Configuration.setting('BetterEmbed.NeosEmbed.translationKeys.msgClick'))}
-    msgGdpr = ${I18n.translate(Configuration.setting('BetterEmbed.NeosEmbed.translationKeys.msgGdpr'))}
-    labelOk = ${I18n.translate(Configuration.setting('BetterEmbed.NeosEmbed.translationKeys.labelOk'))}
-    labelCancel = ${I18n.translate(Configuration.setting('BetterEmbed.NeosEmbed.translationKeys.labelCancel'))}
-    readMore = ${I18n.translate(Configuration.setting('BetterEmbed.NeosEmbed.translationKeys.readMore'))}
+
+
+    // Translation strings
+    msgGdpr = ${Translation.translate('text.msgGdpr', '', [], null, 'BetterEmbed.NeosEmbed')}
+    msgClick = ${Translation.translate('text.msgClick', 'With a click on the link below, the original content will be loaded. This can include remote content and you can possibly be tracked from the original provider.', [], null, 'BetterEmbed.NeosEmbed')}
+    labelOk = ${Translation.translate('text.labelOk', 'show original content', [], null, 'BetterEmbed.NeosEmbed')}
+    labelCancel = ${Translation.translate('text.labelCancel', 'close', [], null, 'BetterEmbed.NeosEmbed')}
+    readMore = ${Translation.translate('text.readMore', 'read more', [], null, 'BetterEmbed.NeosEmbed')}
+    showOriginal = ${Translation.translate('text.showOriginal', 'show original', [], null, 'BetterEmbed.NeosEmbed')}
+    hideOriginal = ${Translation.translate('text.hideOriginal', 'hide original', [], null, 'BetterEmbed.NeosEmbed')}
 
     renderer = afx`
         <BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" 
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file original="" product-name="BetterEmbed.NeosEmbed" source-language="en" datatype="plaintext">
         <body>
             <trans-unit id="placeholder.message" xml:space="preserve" approved="yes">
@@ -9,7 +10,7 @@
                 <source>With a click on the link below, the original content will be loaded. This can include remote content and you can possibly be tracked from the original provider.</source>
             </trans-unit>
             <trans-unit id="text.msgGdpr" xml:space="preserve" approved="yes">
-                <source>Text should be adopted for your GDPR needs</source>
+                <source></source>
             </trans-unit>
             <trans-unit id="text.labelOk" xml:space="preserve" approved="yes">
                 <source>show original content</source>
@@ -19,6 +20,15 @@
             </trans-unit>
             <trans-unit id="text.readMore" xml:space="preserve" approved="yes">
                 <source>read more</source>
+            </trans-unit>
+            <trans-unit id="text.showOriginal" xml:space="preserve" approved="yes">
+                <source>show original</source>
+            </trans-unit>
+            <trans-unit id="text.hideOriginal" xml:space="preserve" approved="yes">
+                <source>hide original</source>
+            </trans-unit>
+            <trans-unit id="thumbnail.alternativeText" xml:space="preserve">
+                <source>Thumbnail from the embeded URL</source>
             </trans-unit>
         </body>
     </file>

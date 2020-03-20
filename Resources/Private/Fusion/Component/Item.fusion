@@ -16,7 +16,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Item) < prototype(Neos.Fusion:Componen
     authorUrl               = ${q(this.recordNode).property('authorUrl')}
     itemType                = ${q(this.recordNode).property('itemType')}
 
-    placeholder = ${I18n.translate(Configuration.setting('BetterEmbed.NeosEmbed.translationKeys.placeholder'))}
+    placeholder = ${Translation.translate('placeholder.message', 'Please set a URL in the inspector panel', [], null, 'BetterEmbed.NeosEmbed')}
 
     @if.hasRecordOrInBackend = ${this.recordNode || node.context.inBackend}
 

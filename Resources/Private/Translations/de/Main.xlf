@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" 
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file original="" product-name="BetterEmbed.NeosEmbed" source-language="de" datatype="plaintext">
         <body>
             <trans-unit id="placeholder.message" xml:space="preserve" approved="yes">
-                <source>Bitte geben Sie eine URL in Inspector panel ein.</source>
+                <source>Bitte geben Sie eine URL in Inspektor Panel ein.</source>
             </trans-unit>
             <trans-unit id="text.msgClick" xml:space="preserve" approved="yes">
                 <source>Mit einem Klick auf den untenstehenden Link wird der ursprüngliche Inhalt geladen. Dieser kann auch entfernte Inhalte enthalten und Sie können möglicherweise vom ursprünglichen Anbieter verfolgt werden.</source>
             </trans-unit>
             <trans-unit id="text.msgGdpr" xml:space="preserve" approved="yes">
-                <source>Der Text sollte für Ihre GDPR-Bedürfnisse angepasst werden.</source>
+                <source></source>
             </trans-unit>
             <trans-unit id="text.labelOk" xml:space="preserve" approved="yes">
-                <source>Original content anzeigen</source>
+                <source>Originalen Inhalt anzeigen</source>
             </trans-unit>
             <trans-unit id="text.labelCancel" xml:space="preserve" approved="yes">
                 <source>Schließen</source>
             </trans-unit>
             <trans-unit id="text.readMore" xml:space="preserve" approved="yes">
                 <source>Mehr lesen</source>
+            </trans-unit>
+            <trans-unit id="text.showOriginal" xml:space="preserve" approved="yes">
+                <source>Original anzeigen</source>
+            </trans-unit>
+            <trans-unit id="text.hideOriginal" xml:space="preserve" approved="yes">
+                <source>Original ausblenden</source>
+            </trans-unit>
+            <trans-unit id="thumbnail.alternativeText" xml:space="preserve">
+                <source>Vorschaubild von der eingebundenen URL</source>
             </trans-unit>
         </body>
     </file>
