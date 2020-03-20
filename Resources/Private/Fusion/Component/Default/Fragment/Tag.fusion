@@ -1,5 +1,5 @@
 prototype(BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag) < prototype(Neos.Fusion:Component) {
-    tagName = 'article'
+    tagName = 'div'
     itemType = null
     content = null
     namespace = 'betterembed'
