@@ -3,7 +3,7 @@
   superTypes:
     'BetterEmbed.NeosEmbed:Mixin.Include': true
   ui:
-    inlineEditable: true
+    inlineEditable: false
     inspector:
       groups:
         settings:
