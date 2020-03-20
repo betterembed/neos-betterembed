@@ -12,6 +12,11 @@ Licensed under ${composer.license}`;
 export default [
     {
         input: 'Resources/Private/Assets/Main.js',
+        onwarn: message => {
+            if (message.code == 'EVAL') {
+                return;
+            }
+        },
         plugins: [
             babel(),
             terser({
