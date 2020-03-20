@@ -3,14 +3,19 @@ prototype(BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag) < prototype(Neos
     itemType = null
     content = null
     namespace = 'betterembed'
+    modifier = null
 
     @if.shouldRender = ${this.tagName && this.itemType && this.content && this.namespace}
+
+    // Add namespace to modifier classes
+    modifier.@process.addNamespace = ${value && Type.isString(value) ? this.namespace + '--' + value : null}
+    itemType.@process.addNamespace = ${this.namespace + '--' + String.toLowerCase(value)}
 
     renderer = Neos.Fusion:Tag {
         tagName = ${props.tagName}
         attributes {
-            class = ${['js-betterembed', props.namespace, props.itemType ? String.toLowerCase(props.namespace + '--' + props.itemType) : null]}
-            @ignoreProperties = ${['tagName','itemType','content']}
+            class = ${['js-betterembed', props.namespace, props.itemType, props.modifier]}
+            @ignoreProperties = ${['tagName','itemType','content','namespace', 'modifier']}
             @apply.spread = ${props}
         }
         content = ${props.content}
