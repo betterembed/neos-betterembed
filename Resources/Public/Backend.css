@@ -1,0 +1,8 @@
+/*!
+ * BetterEmbed.NeosEmbed - created by David Spiola and Jon Uhlmann
+ * @link https://github.com/betterembed/neos-betterembed
+ * Copyright 2020 David Spiola and Jon Uhlmann
+ * Licensed under GPL-3.0-or-later
+ */
+.better-embed-placeholder{padding:1em;border:.3em solid #f15a24;position:relative;margin:2em 1em}.better-embed-placeholder:after,.better-embed-placeholder:before{content:"";display:block;position:absolute;background:#fff}.better-embed-placeholder:before{top:-.3em;bottom:-.3em;left:1em;right:1em}.better-embed-placeholder:after{top:1em;bottom:1em;left:-.3em;right:-.3em}.better-embed-placeholder__heading{position:relative;z-index:1;font-size:1.5em;text-align:center;font-family:sans-serif;line-height:1.15}
+/*# sourceMappingURL=Backend.css.map */
