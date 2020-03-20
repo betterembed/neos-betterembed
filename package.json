@@ -1,0 +1,31 @@
+{
+  "name": "betterembed.neos-betterembed",
+  "description": "Dependencies for BetterEmbed.NeosEmbed",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/betterembed/neos-betterembed.git"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "autoprefixer": "^9.7.4",
+    "cssnano": "^4.1.10",
+    "postcss-banner": "^3.0.1",
+    "postcss-cli": "^7.1.0",
+    "rollup": "^1.32.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-license": "^0.13.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "sass": "^1.26.3"
+  },
+  "scripts": {
+    "js": "rollup --config",
+    "css:scss": "sass --embed-sources Resources/Private/Assets:Resources/Public",
+    "css:postcss": "postcss Resources/Public/*.css --map --replace",
+    "css": "yarn css:scss && yarn css:postcss",
+    "build": "rm -rf Resources/Public/*;yarn css | yarn js",
+    "start": "yarn build"
+  }
+}
