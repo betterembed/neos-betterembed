@@ -20,7 +20,12 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
     readMore = ${I18n.translate(Configuration.setting('BetterEmbed.NeosEmbed.translationKeys.readMore'))}
 
     renderer = afx`
-        <BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag namespace='betterembed' modifier={props.modifier} itemType={props.itemType} data-embed-html={Json.stringify(props.embedHtml)}>
+        <BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag
+            namespace='betterembed'
+            modifier={props.modifier}
+            itemType={props.itemType}
+            data-embed-html={props.embedHtml ? Json.stringify(props.embedHtml) : null}
+        >
             <button type="button" class="betterembed__show-original-element js-betterembed-show-message"></button>
             <div class="betterembed__item">
                 <header>
