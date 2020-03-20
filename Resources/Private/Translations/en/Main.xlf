@@ -7,7 +7,7 @@
                 <source>Please set a URL in the inspector panel</source>
             </trans-unit>
             <trans-unit id="text.msgClick" xml:space="preserve" approved="yes">
-                <source>With a click on the link below, the original content will be loaded. This can include remote content and you can possibly be tracked from the original provider.</source>
+                <source>With a click on the button below, the original content will be loaded. This can include remote content and you can possibly be tracked from the original provider.</source>
             </trans-unit>
             <trans-unit id="text.msgGdpr" xml:space="preserve" approved="yes">
                 <source></source>

@@ -7,7 +7,7 @@
                 <source>Bitte geben Sie eine URL in Inspektor Panel ein.</source>
             </trans-unit>
             <trans-unit id="text.msgClick" xml:space="preserve" approved="yes">
-                <source>Mit einem Klick auf den untenstehenden Link wird der ursprüngliche Inhalt geladen. Dieser kann auch entfernte Inhalte enthalten und Sie können möglicherweise vom ursprünglichen Anbieter verfolgt werden.</source>
+                <source>Mit einem Klick auf den untenstehenden Button wird der ursprüngliche Inhalt geladen. Dieser kann auch entfernte Inhalte enthalten und Sie können möglicherweise vom ursprünglichen Anbieter verfolgt werden.</source>
             </trans-unit>
             <trans-unit id="text.msgGdpr" xml:space="preserve" approved="yes">
                 <source></source>
