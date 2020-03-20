@@ -62,7 +62,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
                     <time @if.set={props.datePublished} datetime={Date.format(props.datePublished, 'Y-m-d')}>{Date.format(props.datePublished, 'd.m.Y')}</time>
                 </footer>
             </article>
-            <div @if.set={props.embedHtml} class='betterembed__embed'></div>
+            <div @if.set={props.embedHtml} class='betterembed__embed js-betterembed-embed'></div>
         </BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag>
     `
 }
