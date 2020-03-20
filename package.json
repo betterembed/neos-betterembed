@@ -12,6 +12,7 @@
     "@babel/preset-env": "^7.8.7",
     "autoprefixer": "^9.7.4",
     "cssnano": "^4.1.10",
+    "join-array": "^1.1.2",
     "postcss-banner": "^3.0.1",
     "postcss-cli": "^7.1.0",
     "rollup": "^1.32.1",

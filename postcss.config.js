@@ -1,9 +1,14 @@
 const composer = require('./composer');
+const joinArray = require('join-array');
 
-const AUTHOR = composer.authors[0].name;
-const BANNER_CONTENT = `${composer.extra.neos['package-key']} - created by ${AUTHOR}
+const AUTHORS = joinArray({
+    array: composer.authors.map(author => author.name),
+    max: 4
+});
+
+const BANNER_CONTENT = `${composer.extra.neos['package-key']} - created by ${AUTHORS}
 @link ${composer.homepage}
-Copyright ${parseInt(new Date().getFullYear(), 10)} ${AUTHOR}
+Copyright ${parseInt(new Date().getFullYear(), 10)} ${AUTHORS}
 Licensed under ${composer.license}`;
 
 module.exports = {
