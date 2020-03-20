@@ -1,19 +1,18 @@
 prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Component) {
-
-    titel = null
+    title = null
     url = null
-    thumbnailUrl = null
     thumbnail = null
     body = null
     datePublished = null
     authorName = null
-    authorImage = null
     authorUrl = null
     itemType = null
     embedHtml = null
+    thumbnailAlternativeText = ${Translation.translate('thumbnail.alternativeText', '', [], null, 'BetterEmbed.NeosEmbed')}
 
     modifier = null
 
+    betterEmbedLogo = ${File.readFile('resource://BetterEmbed.NeosEmbed/Private/Assets/Logo.svg')}
 
     // Translation strings
     msgGdpr = ${Translation.translate('text.msgGdpr', '', [], null, 'BetterEmbed.NeosEmbed')}
@@ -31,38 +30,39 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
             itemType={props.itemType}
             data-embed-html={props.embedHtml ? Json.stringify(props.embedHtml) : null}
         >
-            <button type="button" class="betterembed__show-original-element js-betterembed-show-message"></button>
-            <div class="betterembed__item">
-                <header>
-                    <h3 class="betterembed__network">{props.itemType}</h3>
-                </header>
-                <div class="betterembed__body">
-                    <div class="betterembed__msg">
-                        <p>
-                            {props.msgClick}
-                        </p>
-                        <p @if.isset={props.msgGdpr}>
-                            <strong>{props.msgGdpr}</strong>
-                        </p>
-                        <button type="button" class="betterembed__msg-button-primary js-betterembed-load-remote">{props.labelOk}</button>
-                        <button type="button" class="betterembed__msg-button-secondary js-betterembed-close">{props.labelCancel}</button>
-                    </div>
-                    <div @if.render={props.thumbnailUrl} class="betterembed__media">
-                        <Neos.Neos:ImageTag asset={props.thumbnail} alt="embed image"/>
-                    </div>
-                    <h3 @if.render={props.title} class="betterembed__title">{props.title}</h3>
-                    <div class="betterembed__text">
-                        {props.body} <a href={props.url} class="betterembed__read-more">{props.readMore}</a>
-                    </div>
-                    <footer class="betterembed__footer">
-                        <span @if.render={props.authorName} class="betterembed__author">
-                          <a href={props.authorUrl}>{props.authorName}</a>
-                        </span>
-                        <span @if.render={props.datePublished}> {Date.format(props.datePublished, 'd.m.Y')}</span>
-                    </footer>
-                </div>
+            <div class='betterembed__top'>
+                <div class='betterembed__network'>{props.itemType}</div>
+                <button @if.set={props.embedHtml} type='button' class='betterembed-switch js-betterembed-switch'>
+                    <span class='betterembed-switch__show'>{props.showOriginal}</span>
+                    <span class='betterembed-switch__hide'>{props.hideOriginal}</span>
+                    {props.betterEmbedLogo}
+                </button>
             </div>
-            <div class="betterembed__embed"></div>
+            <div @if.set={props.embedHtml} class='betterembed__dialog'>
+                <p @if.set={props.msgClick}>{props.msgClick}</p>
+                <p @if.set={props.msgGdpr}>{props.msgGdpr}</p>
+                <button type='button' class='betterembed__button betterembed__button--primary js-betterembed-load-remote'>{props.labelOk}</button>
+                <button type='button' class='betterembed__button betterembed__button--secondary js-betterembed-close'>{props.labelCancel}</button>
+            </div>
+            <article class='betterembed__body'>
+                <header @if.set={props.title} class='betterembed__header'>
+                    <h1>{props.title}</h1>
+                </header>
+                <figure @if.set={props.thumbnail} class='betterembed__media'>
+                    <Neos.Neos:ImageTag asset={props.thumbnail} alt={props.thumbnailAlternativeText} />
+                </figure>
+                <p class='betterembed__text'>
+                    {props.body} <a @if.set={props.url} href={props.url} class='betterembed__read-more'>{props.readMore}</a>
+                </p>
+                <footer @if.set={props.authorName || props.datePublished} class='betterembed__footer'>
+                    <a @if.set={props.authorName} rel='author' href={props.authorUrl} class='betterembed__author'>
+                        {props.authorName}
+                    </a>
+                    {' '}
+                    <time @if.set={props.datePublished} datetime={Date.format(props.datePublished, 'Y-m-d')}>{Date.format(props.datePublished, 'd.m.Y')}</time>
+                </footer>
+            </article>
+            <div @if.set={props.embedHtml} class='betterembed__embed'></div>
         </BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag>
     `
 }
