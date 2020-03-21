@@ -72,6 +72,12 @@ This package currently only requires Neos >= `4.3` and `guzzlehttp/guzzle`
 
 The package includes a default rendering component together with an according to Javascript and CSS.
 
+## Asset handling
+
+You will find the imported assets in the "BetterEmbed" asset collection within the Neos CMS Media Module. Each asset will be tagged with the itemType of the BetterEmbed response record for further grouping.
+
+![BetterEmbed media module]
+
 ### Use your own renderer
 
 You can easily register your own rendering component via extending `BetterEmbed.NeosEmbed:Component.Renderer`:
@@ -108,4 +114,5 @@ Feel free to create issues for PRs if you like.
 [betterembed placeholder]: Documentation/BetterEmbed-Placeholder.png
 [betterembed example blog post]: Documentation/BetterEmbed-Example-BlogPost.png
 [betterembed example youtube]: Documentation/BetterEmbed-Example-Youtube.png
+[betterembed media module]: Documentation/BetterEmbed-Media-Module.png
 [swagger]: https://api.betterembed.com/swagger/index.html

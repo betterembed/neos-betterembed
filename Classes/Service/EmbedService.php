@@ -8,6 +8,7 @@ use Neos\ContentRepository\Exception\NodeException;
 use Neos\ContentRepository\Exception\NodeTypeNotFoundException;
 use Neos\Flow\Annotations as Flow;
 use BetterEmbed\NeosEmbed\Domain\Dto\BetterEmbedRecord;
+use Doctrine\Common\Collections\ArrayCollection;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\ContentRepository\Domain\Model\NodeTemplate;
 use Neos\ContentRepository\Domain\Service\Context;
@@ -69,10 +70,16 @@ class EmbedService
      */
     protected $mappingStrategy;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $assetCollections;
+
 
     public function initializeObject()
     {
         $this->context = $this->contextFactory->create(['workspaceName' => 'live']);
+        $this->assetCollections = new ArrayCollection([$this->nodeService->findOrCreateBetterEmbedAssetCollection()]);
     }
 
     /**
@@ -164,15 +171,19 @@ class EmbedService
     private function createRecordNode(BetterEmbedRecord $record)
     {
 
-        $asset = preg_replace('/(^.*\.(jpg|jpeg|png|gif)).*$/', '$1', $record->getThumbnailUrl());
-        $extension = preg_replace('/^.*\.(jpg|jpeg|png|gif)$/', '$1', $asset);
-
-        $resource = $this->resourceManager->importResource($asset);
+        $assetOriginal = $record->getThumbnailUrl(); //original asset may have get parameters in the url
+        $asset = preg_replace('/(^.*\.(jpg|jpeg|png|gif)).*$/', '$1', $assetOriginal); //asset witout get parametes for neos import
+        $extension = preg_replace('/^.*\.(jpg|jpeg|png|gif)$/', '$1', $asset); // asset extension
+        
+        $resource = $this->resourceManager->importResource($assetOriginal);
+        $tags =  new ArrayCollection([$this->nodeService->findOrCreateBetterEmbedTag($record->getItemType(), $this->assetCollections)]);
 
         /** @var Image $resourceObj */
         $image = new Image($resource);
         $image->getResource()->setFilename(md5($record->getUrl()) . '.' . $extension);
-        $image->getResource()->setMediaType('image/jpeg');
+        $image->getResource()->setMediaType('image/' . $extension);
+        $image->setAssetCollections($this->assetCollections);
+        $image->setTags($tags);
         $this->assetRepository->add($image);
 
         /** @var NodeType $nodeType */
