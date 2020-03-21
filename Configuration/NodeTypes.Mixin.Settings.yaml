@@ -1,0 +1,8 @@
+'BetterEmbed.NeosEmbed:Mixin.Settings':
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        settings:
+          label: i18n
+          icon: plus

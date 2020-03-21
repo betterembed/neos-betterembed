@@ -1,6 +1,10 @@
 'BetterEmbed.NeosEmbed:Record':
   superTypes:
     'Neos.Neos:Document': true
+  search:
+    fulltext:
+      enable: false
+      isRoot: false
   properties:
     url:
       type: string

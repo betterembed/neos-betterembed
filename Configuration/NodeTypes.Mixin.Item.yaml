@@ -2,13 +2,9 @@
   abstract: true
   superTypes:
     'BetterEmbed.NeosEmbed:Mixin.Include': true
+    'BetterEmbed.NeosEmbed:Mixin.Settings': true
   ui:
     inlineEditable: false
-    inspector:
-      groups:
-        settings:
-          label: Settings
-          icon: gear
   properties:
     url:
       type: string
@@ -27,5 +23,5 @@
         reloadPageIfChanged: true
         inspector:
           editorOptions:
-            startingPoint: '/embeds'
+            startingPoint: '/better-embeds'
             nodeTypes: ['BetterEmbed.NeosEmbed:Document.Record']
