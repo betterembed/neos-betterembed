@@ -38,7 +38,7 @@ document.addEventListener('click', function(event) {
             EMBED_ELEMENT.innerHTML = JSON.parse(CONTAINER.dataset.embedHtml);
 
             // Run trough every script and active it
-            [...EMBED_ELEMENT.querySelectorAll('script')].forEach(scriptTag => {
+            Array.from(EMBED_ELEMENT.querySelectorAll('script')).forEach(scriptTag => {
                 if (scriptTag.src) {
                     const TAG = document.createElement('script');
                     TAG.src = scriptTag.src;
