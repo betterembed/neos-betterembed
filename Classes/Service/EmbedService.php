@@ -1,4 +1,5 @@
 <?php
+
 namespace BetterEmbed\NeosEmbed\Service;
 
 use GuzzleHttp\Exception\GuzzleException;
@@ -12,7 +13,6 @@ use Neos\ContentRepository\Domain\Model\NodeTemplate;
 use Neos\ContentRepository\Domain\Service\Context;
 use Neos\ContentRepository\Domain\Service\ContextFactoryInterface;
 use Neos\ContentRepository\Domain\Service\NodeTypeManager;
-use Neos\Flow\Log\SystemLoggerInterface;
 use Neos\Flow\ResourceManagement\ResourceManager;
 use Neos\Flow\Utility\Algorithms;
 use GuzzleHttp\Client;
@@ -24,7 +24,8 @@ use Neos\Media\Domain\Strategy\AssetModelMappingStrategyInterface;
  *
  * @Flow\Scope("singleton")
  */
-class EmbedService {
+class EmbedService
+{
 
     /**
      * @var Context
@@ -49,11 +50,6 @@ class EmbedService {
      */
     protected $nodeTypeManager;
 
-    /**
-     * @Flow\Inject
-     * @var SystemLoggerInterface
-     */
-    protected $systemLogger;
 
     /**
      * @Flow\Inject
@@ -96,7 +92,6 @@ class EmbedService {
                 $recordNode = $this->getByUrl($url);
                 $node->setProperty('record', $recordNode);
             }
-
         }
     }
 
@@ -117,7 +112,6 @@ class EmbedService {
                 $recordNode = $this->getByUrl($url);
                 $this->nodeService->removeEmbedNode($recordNode);
             }
-
         }
     }
 
@@ -127,7 +121,8 @@ class EmbedService {
      * @throws GuzzleException
      * @throws NodeTypeNotFoundException
      */
-    public function getByUrl(string $url) : NodeInterface {
+    public function getByUrl(string $url): NodeInterface
+    {
 
         /** @var NodeInterface $record */
         $node = $this->nodeService->findRecordByUrl($this->context->getRootNode(), $url);
@@ -146,7 +141,8 @@ class EmbedService {
      * @return BetterEmbedRecord
      * @throws GuzzleException
      */
-    private function callService(string $url) {
+    private function callService(string $url)
+    {
 
         $client = new Client();
         $response = $client->request(
@@ -165,10 +161,11 @@ class EmbedService {
      * @return NodeInterface
      * @throws NodeTypeNotFoundException
      */
-    private function createRecordNode(BetterEmbedRecord $record) {
+    private function createRecordNode(BetterEmbedRecord $record)
+    {
 
-        $asset = preg_replace('/(^.*\.(jpg|jpeg|png|gif)).*$/', '$1',$record->getThumbnailUrl());
-        $extension = preg_replace('/^.*\.(jpg|jpeg|png|gif)$/', '$1',$asset);
+        $asset = preg_replace('/(^.*\.(jpg|jpeg|png|gif)).*$/', '$1', $record->getThumbnailUrl());
+        $extension = preg_replace('/^.*\.(jpg|jpeg|png|gif)$/', '$1', $asset);
 
         $resource = $this->resourceManager->importResource($asset);
 
@@ -198,13 +195,11 @@ class EmbedService {
         $nodeTemplate->setProperty('authorUrl', $record->getAuthorUrl());
         $nodeTemplate->setProperty('authorImage', $record->getAuthorImage());
         $nodeTemplate->setProperty('publishedAt', $record->getPublishedAt());
-        $nodeTemplate->setProperty('uriPathSegment', 'embed-' . random_int(0000000000,9999999999));
+        $nodeTemplate->setProperty('uriPathSegment', 'embed-' . random_int(0000000000, 9999999999));
 
         /** @var NodeInterface $node */
         $node = $this->nodeService->findOrCreateBetterEmbedRootNode($this->context)->createNodeFromTemplate($nodeTemplate);
 
         return $node;
     }
-
 }
-

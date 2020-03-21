@@ -3,10 +3,28 @@
     "type": "neos-plugin",
     "name": "betterembed/neos-betterembed",
     "license": "GPL-3.0-or-later",
+    "homepage": "https://github.com/betterembed/neos-betterembed",
+    "support": {
+        "issues": "https://github.com/betterembed/neos-betterembed/issues",
+        "source": "https://github.com/betterembed/neos-betterembed"
+    },
     "require": {
         "neos/neos": "^4.3 || ^5",
         "guzzlehttp/guzzle": "^6.3"
     },
+    "authors": [
+        {
+            "name": "David Spiola",
+            "homepage": "https://github.com/davidspiola",
+            "role": "Developer"
+        },
+        {
+            "name": "Jon Uhlmann",
+            "email": "me@jonnitto.ch",
+            "homepage": "https://twitter.com/jonnitto",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "BetterEmbed\\NeosEmbed\\": "Classes/"

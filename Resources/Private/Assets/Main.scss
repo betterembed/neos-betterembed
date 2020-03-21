@@ -1,0 +1,245 @@
+$betterembed-max-width: 550px !default;
+$betterembed-color: #fff !default;
+$betterembed-background: #4c5559 !default;
+$betterembed-dialog-background: #000 !default;
+$betterembed-dialog-opacity: 0.84 !default;
+$betterembed-dialog-color: #fff !default;
+
+.betterembed {
+  position: relative;
+  max-width: $betterembed-max-width;
+  margin-left: auto;
+  margin-right: auto;
+
+  &,
+  * {
+    box-sizing: border-box;
+  }
+
+  a,
+  button {
+    * {
+      // This is for easier event delegation in Javascript
+      pointer-events: none;
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.is-betterembed-remote-visible {
+    .betterembed-switch__hide,
+    .betterembed__embed {
+      display: block;
+    }
+
+    .betterembed-switch__show,
+    .betterembed__body {
+      display: none;
+    }
+  }
+}
+
+.betterembed-switch__hide {
+  display: none;
+}
+
+.betterembed-switch,
+.betterembed-switch__show {
+  display: block;
+}
+
+.betterembed__top {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px 5px;
+  align-items: baseline;
+
+  > * {
+    margin: 0 5px;
+  }
+}
+
+.betterembed__network {
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1;
+  text-transform: uppercase;
+  flex: 1;
+  min-width: 50%;
+}
+
+.betterembed-switch {
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+
+  &:hover,
+  &:focus {
+    .betterembed__logo {
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
+    .betterembed__logo {
+      transform: scale(1.05);
+    }
+  }
+
+  .betterembed__logo {
+    display: block;
+    margin-left: 5px;
+    width: 23px;
+    height: 23px;
+    transition: transform 0.2s ease;
+    will-change: transform;
+  }
+}
+
+.betterembed__body {
+  background: $betterembed-background;
+  color: $betterembed-color;
+  display: flex;
+  flex-direction: column;
+
+  > :not(.betterembed__media) {
+    margin: 15px 15px 0;
+  }
+
+  > :last-child {
+    padding-bottom: 15px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.betterembed__media {
+  order: -1;
+  margin: 0;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.betterembed__header {
+  word-break: break-word;
+  hyphens: auto;
+
+  * {
+    font-size: 1.5em;
+    color: inherit;
+    margin: 0;
+  }
+}
+
+.betterembed__text {
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.betterembed__read-more {
+  font-size: 80%;
+  white-space: nowrap;
+}
+
+.betterembed__dialog {
+  position: absolute;
+  top: 40px;
+  left: 15px;
+  right: 15px;
+  padding: 20px;
+  background-color: rgba($betterembed-dialog-background, $betterembed-dialog-opacity);
+  color: $betterembed-dialog-color;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  opacity: 0;
+  transform: translateY(-20px);
+
+  .is-betterembed-dialog-visible:not(.is-betterembed-remote-visible) & {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  p {
+    text-align: left;
+    margin: 0;
+
+    &:not(:last-of-type) {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.betterembed__button {
+  display: inline-block;
+  margin: 20px 5px 0;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: inherit;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.betterembed__button--secondary {
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.betterembed__button--primary {
+  border-color: $betterembed-dialog-color;
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  &:hover,
+  &:focus {
+    background-color: $betterembed-dialog-color;
+    color: $betterembed-dialog-background;
+  }
+}
+
+.betterembed__footer {
+  padding-top: 15px;
+  border-top: 1px solid currentColor;
+  overflow: auto;
+}
+
+.betterembed__author.betterembed__author {
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.betterembed__embed {
+  display: none;
+
+  > * {
+    width: 100% !important;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+}

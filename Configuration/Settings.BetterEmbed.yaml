@@ -1,9 +1,0 @@
-BetterEmbed:
-  NeosEmbed:
-    translationKeys:
-      placeholder: 'BetterEmbed.NeosEmbed:Main:placeholder.message'
-      msgClick: 'BetterEmbed.NeosEmbed:Main:text.msgClick'
-      msgGdpr: 'BetterEmbed.NeosEmbed:Main:text.msgGdpr'
-      labelOk: 'BetterEmbed.NeosEmbed:Main:text.labelOk'
-      labelCancel: 'BetterEmbed.NeosEmbed:Main:text.labelCancel'
-      readMore: 'BetterEmbed.NeosEmbed:Main:text.readMore'

@@ -2,7 +2,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Item) < prototype(Neos.Fusion:Componen
     recordNode              = ${q(node).property('record')}
 
     identifier              = ${'embed-form-' + q(node).property('_identifier')}
-    titel                   = ${q(this.recordNode).property('title')}
+    title                   = ${q(this.recordNode).property('title')}
     url                     = ${q(this.recordNode).property('url')}
     thumbnail               = ${q(this.recordNode).property('thumbnail')}
     thumbnailUrl            = ${q(this.recordNode).property('thumbnailUrl')}
@@ -16,14 +16,14 @@ prototype(BetterEmbed.NeosEmbed:Component.Item) < prototype(Neos.Fusion:Componen
     authorUrl               = ${q(this.recordNode).property('authorUrl')}
     itemType                = ${q(this.recordNode).property('itemType')}
 
-    placeholder = ${I18n.translate(Configuration.setting('BetterEmbed.NeosEmbed.translationKeys.placeholder'))}
+    placeholder = ${Translation.translate('placeholder.message', 'Please set a URL in the inspector panel', [], null, 'BetterEmbed.NeosEmbed')}
 
     @if.hasRecordOrInBackend = ${this.recordNode || node.context.inBackend}
 
     renderer = afx`
         <BetterEmbed.NeosEmbed:Component.Renderer @if.set={props.recordNode} @key='renderer' />
-        <div class='better-embed-placeholder' @if.notSet={!props.recordNode} @key='placeholder'>
-            <div class='heading'>{props.placeholder}</div>
+        <div @if.notSet={!props.recordNode} @key='placeholder' class='better-embed-placeholder'>
+            <div class='better-embed-placeholder__heading'>{props.placeholder}</div>
         </div>
     `
 
