@@ -8,7 +8,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
     authorUrl = null
     itemType = null
     embedHtml = null
-    thumbnailAlternativeText = ${Translation.translate('thumbnail.alternativeText', '', [], null, 'BetterEmbed.NeosEmbed')}
+    thumbnailAlternativeText = ${Translation.translate('thumbnail.alternativeText', 'Thumbnail from the embeded URL', [], null, 'BetterEmbed.NeosEmbed')}
 
     modifier = null
 
@@ -49,7 +49,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
                     <h1>{props.title}</h1>
                 </header>
                 <figure @if.set={props.thumbnail} class='betterembed__media'>
-                    <Neos.Neos:ImageTag asset={props.thumbnail} alt={props.thumbnailAlternativeText} />
+                    <Neos.Neos:ImageTag asset={props.thumbnail} attributes.alt={props.thumbnailAlternativeText} />
                 </figure>
                 <p class='betterembed__text'>
                     {props.body} <a @if.set={props.url} href={props.url} class='betterembed__read-more'>{props.readMore}</a>
