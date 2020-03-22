@@ -13,10 +13,10 @@
                 <source></source>
             </trans-unit>
             <trans-unit id="text.labelOk" xml:space="preserve" approved="yes">
-                <source>show original content</source>
+                <source>Show original content</source>
             </trans-unit>
             <trans-unit id="text.labelCancel" xml:space="preserve" approved="yes">
-                <source>close</source>
+                <source>Cancel</source>
             </trans-unit>
             <trans-unit id="text.readMore" xml:space="preserve" approved="yes">
                 <source>read more</source>
