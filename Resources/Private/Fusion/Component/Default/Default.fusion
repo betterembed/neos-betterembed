@@ -10,6 +10,8 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
     embedHtml = null
     thumbnailAlternativeText = ${Translation.translate('thumbnail.alternativeText', 'Thumbnail from the embeded URL', [], null, 'BetterEmbed.NeosEmbed')}
 
+    titleTagName = 'h2'
+
     modifier = null
 
     betterEmbedLogo = ${File.readFile('resource://BetterEmbed.NeosEmbed/Private/Assets/Logo.svg')}
@@ -22,6 +24,8 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
     readMore = ${Translation.translate('text.readMore', 'read more', [], null, 'BetterEmbed.NeosEmbed')}
     showOriginal = ${Translation.translate('text.showOriginal', 'show original', [], null, 'BetterEmbed.NeosEmbed')}
     hideOriginal = ${Translation.translate('text.hideOriginal', 'hide original', [], null, 'BetterEmbed.NeosEmbed')}
+
+    @if.hasItemType = ${this.itemType}
 
     renderer = afx`
         <BetterEmbed.NeosEmbed:Component.Default.Fragment.Tag
@@ -45,13 +49,15 @@ prototype(BetterEmbed.NeosEmbed:Component.Default) < prototype(Neos.Fusion:Compo
                 <button type='button' class='betterembed__button betterembed__button--secondary js-betterembed-close'>{props.labelCancel}</button>
             </div>
             <article class='betterembed__body'>
-                <header @if.set={props.title} class='betterembed__header'>
-                    <h1>{props.title}</h1>
+                <header @if.set={props.title && props.titleTagName} class='betterembed__header'>
+                    <Neos.Fusion:Tag tagName={props.titleTagName}>
+                        {props.title}
+                    </Neos.Fusion:Tag>
                 </header>
                 <figure @if.set={props.thumbnail} class='betterembed__media'>
                     <Neos.Neos:ImageTag asset={props.thumbnail} attributes.alt={props.thumbnailAlternativeText} />
                 </figure>
-                <p class='betterembed__text'>
+                <p class='betterembed__text' @if.set={props.body || props.readMore}>
                     {props.body} <a @if.set={props.url} href={props.url} class='betterembed__read-more'>{props.readMore}</a>
                 </p>
                 <footer @if.set={props.authorName || props.datePublished} class='betterembed__footer'>
