@@ -3,7 +3,7 @@
     <file original="" product-name="BetterEmbed.NeosEmbed" source-language="en" datatype="plaintext">
         <body>
             <trans-unit id="ui.help.message" xml:space="preserve">
-                <source>With BetterEmbed you can display a teaser of any web content you like by just providing the URL for it. For instance, you can display Youtube videos or Twitter posts without being tracked and loading of external resources.</source>
+                <source>With BetterEmbed you can display a teaser of any web content you like by just providing the URL for it. For instance, you can display Youtube videos or Twitter posts without being tracked and without loading external resources.</source>
             </trans-unit>
         </body>
     </file>

@@ -10,7 +10,7 @@ BetterEmbed is a free service to easily integrate content like YouTube videos, T
 -   improve privacy by keeping out unwanted tracking cookies (GDPR)
 -   increase page speed by not loading external Javascript and CSS resources
 
-If you want to know more, please visit https://www.acolono.com/betterembed to see the full feature list and get more information about the project.
+If you want to know more, please visit https://betterembed.com to see the full feature list and get more information about the project.
 
 ## Installation
 
@@ -52,7 +52,9 @@ This package currently only requires Neos >= `4.3` and `guzzlehttp/guzzle`
 
 #### YouTube Example
 
-![BetterEmbed example Youtube]
+![BetterEmbed example Youtube 1]
+![BetterEmbed example Youtube 2]
+![BetterEmbed example Youtube 3]
 
 ```json
 {
@@ -68,9 +70,15 @@ This package currently only requires Neos >= `4.3` and `guzzlehttp/guzzle`
 }
 ```
 
+#### Twitter Example
+
+![BetterEmbed example Twitter 1]
+![BetterEmbed example Twitter 2]
+![BetterEmbed example Twitter 3]
+
 ## Rendering
 
-The package includes a default rendering component together with an according to Javascript and CSS.
+The package includes a default rendering component together with the according Javascript and CSS sources.
 
 ### Use your own renderer
 
@@ -89,7 +97,7 @@ prototype(BetterEmbed.NeosEmbed:Component.Renderer) < prototype(Neos.Fusion:Case
 
 ## Asset handling
 
-You will find the imported assets in the "BetterEmbed" asset collection within the Neos CMS Media Module. Each asset will be tagged with the itemType of the BetterEmbed response record for further grouping.
+You will find the imported assets in the "BetterEmbed" asset collection within the Neos CMS Media Module. Each asset will be tagged with the `itemType` of the BetterEmbed response record for further grouping.
 
 ![BetterEmbed media module]
 
@@ -113,6 +121,11 @@ Feel free to create issues for PRs if you like.
 [betterembed content element]: Documentation/BetterEmbed-Content-Element.png
 [betterembed placeholder]: Documentation/BetterEmbed-Placeholder.png
 [betterembed example blog post]: Documentation/BetterEmbed-Example-BlogPost.png
-[betterembed example youtube]: Documentation/BetterEmbed-Example-Youtube.png
+[betterembed example youtube 1]: Documentation/BetterEmbed-Example-Youtube-1.png
+[betterembed example youtube 2]: Documentation/BetterEmbed-Example-Youtube-2.png
+[betterembed example youtube 3]: Documentation/BetterEmbed-Example-Youtube-3.png
+[betterembed example twitter 1]: Documentation/BetterEmbed-Example-Twitter-1.png
+[betterembed example twitter 2]: Documentation/BetterEmbed-Example-Twitter-2.png
+[betterembed example twitter 3]: Documentation/BetterEmbed-Example-Youtube-3.png
 [betterembed media module]: Documentation/BetterEmbed-Media-Module.png
 [swagger]: https://api.betterembed.com/swagger/index.html

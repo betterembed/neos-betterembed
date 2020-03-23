@@ -4,7 +4,7 @@
     <file original="" product-name="BetterEmbed.NeosEmbed" source-language="de" datatype="plaintext">
         <body>
             <trans-unit id="placeholder.message" xml:space="preserve" approved="yes">
-                <source>Bitte geben Sie eine URL in Inspektor Panel ein.</source>
+                <source>Bitte geben Sie eine URL im Inspektor-Panel ein.</source>
             </trans-unit>
             <trans-unit id="text.msgClick" xml:space="preserve" approved="yes">
                 <source>Mit einem Klick auf den untenstehenden Button wird der ursprüngliche Inhalt geladen. Dieser kann auch entfernte Inhalte enthalten und Sie können möglicherweise vom ursprünglichen Anbieter verfolgt werden.</source>
