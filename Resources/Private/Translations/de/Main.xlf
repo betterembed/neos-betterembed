@@ -16,7 +16,7 @@
                 <source>Originalen Inhalt anzeigen</source>
             </trans-unit>
             <trans-unit id="text.labelCancel" xml:space="preserve" approved="yes">
-                <source>Schließen</source>
+                <source>Abbrechen</source>
             </trans-unit>
             <trans-unit id="text.readMore" xml:space="preserve" approved="yes">
                 <source>Mehr lesen</source>
