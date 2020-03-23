@@ -5,6 +5,7 @@
     'BetterEmbed.NeosEmbed:Mixin.Settings': true
   ui:
     inlineEditable: false
+    group: 'widget'
   properties:
     url:
       type: string

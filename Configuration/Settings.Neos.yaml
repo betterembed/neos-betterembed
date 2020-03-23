@@ -1,5 +1,10 @@
 Neos:
   Neos:
+    nodeTypes:
+      groups:
+        widget:
+          position: 50
+          label: 'Widgets'
     fusion:
       autoInclude:
         BetterEmbed.NeosEmbed: true
