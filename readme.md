@@ -17,7 +17,7 @@ If you want to know more, please visit https://betterembed.com to see the full f
 Add the dependency to your site package like this:
 
 ```bash
-composer require --no-update betterembed/neos-embed
+composer require --no-update betterembed/neos-betterembed
 ```
 
 And then run `composer update` in your project's root folder.
