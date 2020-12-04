@@ -1,6 +1,8 @@
 'BetterEmbed.NeosEmbed:Record':
   superTypes:
     'Neos.Neos:Document': true
+  ui:
+    group: null
   search:
     fulltext:
       enable: false
