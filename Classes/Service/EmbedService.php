@@ -20,6 +20,7 @@ use GuzzleHttp\Client;
 use Neos\Media\Domain\Model\Image;
 use Neos\Media\Domain\Repository\AssetRepository;
 use Neos\Media\Domain\Strategy\AssetModelMappingStrategyInterface;
+use Neos\Neos\Domain\Service\NodeSearchService;
 
 /**
  *
@@ -75,6 +76,12 @@ class EmbedService
      */
     protected $assetCollections;
 
+    /**
+     * @Flow\Inject
+     * @var NodeSearchService
+     */
+    protected $nodeSearchService;
+
 
     public function initializeObject()
     {
@@ -115,7 +122,7 @@ class EmbedService
         if ($node->getNodeType()->isOfType('BetterEmbed.NeosEmbed:Mixin.Item')) {
             $url = $node->getProperty('url');
 
-            if (!empty($url)) {
+            if (!empty($url) && count($this->nodeSearchService->findByProperties(['url' => str_replace('"','',json_encode($url))], ['BetterEmbed.NeosEmbed:Mixin.Item'], $this->context)) <= 1) {
                 $recordNode = $this->getByUrl($url);
                 $this->nodeService->removeEmbedNode($recordNode);
             }
