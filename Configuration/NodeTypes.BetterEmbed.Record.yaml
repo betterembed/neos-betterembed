@@ -29,7 +29,7 @@
     thumbnailContent:
       type: string
       defaultValue: ''
-    thumbnailSrc:
+    thumbnail:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Thumbnail'
