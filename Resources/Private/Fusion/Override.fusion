@@ -1,7 +1,7 @@
 prototype(Neos.Neos:Page) {
     head.betterEmbedAssets = Neos.Fusion:Component {
         @position = 'end'
-        includeAssets = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof BetterEmbed.NeosEmbed:Mixin.Include]').is() || q(documentNode).is('[instanceof BetterEmbed.NeosEmbed:Mixin.Include]')}
+        includeAssets = ${documentNode.context.inBackend || q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof BetterEmbed.NeosEmbed:Mixin.Include]').is() || q(documentNode).is('[instanceof BetterEmbed.NeosEmbed:Mixin.Include]')}
         renderer = afx`
             <link @if.set={props.includeAssets} @key='styles' rel='stylesheet' >
                 <Neos.Fusion:ResourceUri @path='attributes.href' path='resource://BetterEmbed.NeosEmbed/Public/Main.css' />
