@@ -154,6 +154,7 @@ class EmbedService
      * @param string $url
      * @return BetterEmbedRecord
      * @throws GuzzleException
+     * @throws \Exception
      */
     private function callService(string $url)
     {
@@ -181,17 +182,20 @@ class EmbedService
         $assetOriginal = $record->getThumbnailUrl(); //original asset may have get parameters in the url
         $asset = preg_replace('/(^.*\.(jpg|jpeg|png|gif)).*$/', '$1', $assetOriginal); //asset witout get parametes for neos import
         $extension = preg_replace('/^.*\.(jpg|jpeg|png|gif)$/', '$1', $asset); // asset extension
-        
+
         $resource = $this->resourceManager->importResource($assetOriginal);
         $tags =  new ArrayCollection([$this->nodeService->findOrCreateBetterEmbedTag($record->getItemType(), $this->assetCollections)]);
 
-        /** @var Image $resourceObj */
-        $image = new Image($resource);
-        $image->getResource()->setFilename(md5($record->getUrl()) . '.' . $extension);
-        $image->getResource()->setMediaType('image/' . $extension);
-        $image->setAssetCollections($this->assetCollections);
-        $image->setTags($tags);
-        $this->assetRepository->add($image);
+        /** @var Image $image */
+        $image = $this->assetRepository->findOneByResourceSha1($resource->getSha1());
+        if ($image === null) {
+            $image = new Image($resource);
+            $image->getResource()->setFilename(md5($record->getUrl()) . '.' . $extension);
+            $image->getResource()->setMediaType('image/' . $extension);
+            $image->setAssetCollections($this->assetCollections);
+            $image->setTags($tags);
+            $this->assetRepository->add($image);
+        }
 
         /** @var NodeType $nodeType */
         $nodeType = $this->nodeTypeManager->getNodeType('BetterEmbed.NeosEmbed:Record');
