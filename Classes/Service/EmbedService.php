@@ -14,6 +14,7 @@ use Neos\ContentRepository\Domain\Model\NodeTemplate;
 use Neos\ContentRepository\Domain\Service\Context;
 use Neos\ContentRepository\Domain\Service\ContextFactoryInterface;
 use Neos\ContentRepository\Domain\Service\NodeTypeManager;
+use Neos\Flow\Exception;
 use Neos\Flow\ResourceManagement\ResourceManager;
 use Neos\Flow\Utility\Algorithms;
 use GuzzleHttp\Client;
@@ -103,7 +104,7 @@ class EmbedService
             $url = $node->getProperty('url');
 
             if (!empty($url)) {
-                $recordNode = $this->getByUrl($url);
+                $recordNode = $this->getByUrl($url, true);
                 $node->setProperty('record', $recordNode);
             }
         }
@@ -124,24 +125,42 @@ class EmbedService
 
             if (!empty($url) && count($this->nodeSearchService->findByProperties(['url' => str_replace('"','',json_encode($url))], ['BetterEmbed.NeosEmbed:Mixin.Item'], $this->context)) <= 1) {
                 $recordNode = $this->getByUrl($url);
-                $this->nodeService->removeEmbedNode($recordNode);
+                if ($recordNode) {
+                    $this->nodeService->removeEmbedNode($recordNode);
+                }
             }
         }
     }
 
     /**
      * @param string $url
-     * @return NodeInterface
+     * @param bool $createIfNotFound
+     * @return NodeInterface|null
+     * @throws Exception
      * @throws GuzzleException
      * @throws NodeTypeNotFoundException
+     * @throws \Neos\Eel\Exception
      */
-    public function getByUrl(string $url): NodeInterface
+    public function getByUrl(string $url, $createIfNotFound = false)
     {
-
         /** @var NodeInterface $record */
         $node = $this->nodeService->findRecordByUrl($this->context->getRootNode(), $url);
 
-        if ($node == null) {
+        if ($node == null && $createIfNotFound) {
+
+            $urlParts = parse_url( $url );
+            if(strstr($urlParts['host'], 'youtube')) {
+                throw new Exception('Youtube URLs are not supported due GDPR consent gateway protection.');
+            }
+
+            if(strstr($urlParts['host'], 'facebook')) {
+                throw new Exception('Facebook URLs are not supported due GDPR consent gateway protection.');
+            }
+
+            if(strstr($urlParts['host'], 'instagram')) {
+                throw new Exception('Instagram URLs are not supported due GDPR consent gateway protection.');
+            }
+
             $record = $this->callService($url);
             $node = $this->createRecordNode($record);
         }
