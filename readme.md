@@ -2,7 +2,10 @@
 
 # BetterEmbed integration for Neos CMS
 
-BetterEmbed is a free service to easily integrate content like YouTube videos, Twitter and Facebook posts, blog posts, or any other kind of remote content.
+BetterEmbed is a free service to easily integrate content like Twitter posts, blog posts, or any other kind of remote content.
+
+**Notice**: Due GDPR consent access gateways, not every URL will work. For instance there are known issues with Youtube, Facebook, and Instagram.
+In case of Youtube embedding, we recommend the [PrettyEmbedFamily](https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms)
 
 ## Benefits of BetterEmbed
 
