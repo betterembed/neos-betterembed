@@ -202,18 +202,21 @@ class EmbedService
         $asset = preg_replace('/(^.*\.(jpg|jpeg|png|gif)).*$/', '$1', $assetOriginal); //asset witout get parametes for neos import
         $extension = preg_replace('/^.*\.(jpg|jpeg|png|gif)$/', '$1', $asset); // asset extension
 
-        $resource = $this->resourceManager->importResource($assetOriginal);
-        $tags =  new ArrayCollection([$this->nodeService->findOrCreateBetterEmbedTag($record->getItemType(), $this->assetCollections)]);
+        $image = null;
+        if (filter_var($assetOriginal, FILTER_VALIDATE_URL)) {
+            $resource = $this->resourceManager->importResource($assetOriginal);
+            $tags = new ArrayCollection([$this->nodeService->findOrCreateBetterEmbedTag($record->getItemType(), $this->assetCollections)]);
 
-        /** @var Image $image */
-        $image = $this->assetRepository->findOneByResourceSha1($resource->getSha1());
-        if ($image === null) {
-            $image = new Image($resource);
-            $image->getResource()->setFilename(md5($record->getUrl()) . '.' . $extension);
-            $image->getResource()->setMediaType('image/' . $extension);
-            $image->setAssetCollections($this->assetCollections);
-            $image->setTags($tags);
-            $this->assetRepository->add($image);
+            /** @var Image $image */
+            $image = $this->assetRepository->findOneByResourceSha1($resource->getSha1());
+            if ($image === null) {
+                $image = new Image($resource);
+                $image->getResource()->setFilename(md5($record->getUrl()) . '.' . $extension);
+                $image->getResource()->setMediaType('image/' . $extension);
+                $image->setAssetCollections($this->assetCollections);
+                $image->setTags($tags);
+                $this->assetRepository->add($image);
+            }
         }
 
         /** @var NodeType $nodeType */
