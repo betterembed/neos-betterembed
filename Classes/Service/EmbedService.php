@@ -149,9 +149,6 @@ class EmbedService
         if ($node == null && $createIfNotFound) {
 
             $urlParts = parse_url( $url );
-            if(strstr($urlParts['host'], 'youtube')) {
-                throw new Exception('Youtube URLs are not supported due GDPR consent gateway protection.');
-            }
 
             if(strstr($urlParts['host'], 'facebook')) {
                 throw new Exception('Facebook URLs are not supported due GDPR consent gateway protection.');
