@@ -9,7 +9,7 @@
         "source": "https://github.com/betterembed/neos-betterembed"
     },
     "require": {
-        "neos/neos": "^4.3 || ^5 || ^7 || ^8",
+        "neos/neos": "^8",
         "guzzlehttp/guzzle": "^6.3"
     },
     "authors": [
