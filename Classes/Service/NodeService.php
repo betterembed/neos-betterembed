@@ -122,17 +122,17 @@ class NodeService
      */
     public function findOrCreateBetterEmbedAssetCollection(string $title = self::ASSET_COLLECTION_TITLE): AssetCollection
     {
-        /** @var AssetCollection $asseteCollection */
-        $asseteCollection = $this->assetCollectionRepository->findByTitle($title)->getFirst();
+        /** @var AssetCollection $assetCollection */
+        $assetCollection = $this->assetCollectionRepository->findByTitle($title)->getFirst();
 
-        if ($asseteCollection == null) {
-            $asseteCollection = new AssetCollection($title);
+        if ($assetCollection === null) {
+            $assetCollection = new AssetCollection($title);
 
-            $this->assetCollectionRepository->add($asseteCollection);
-            $this->persistenceManager->whitelistObject($asseteCollection);
+            $this->assetCollectionRepository->add($assetCollection);
+            $this->persistenceManager->allowObject($assetCollection);
         }
 
-        return $asseteCollection;
+        return $assetCollection;
     }
 
     /**
@@ -174,7 +174,7 @@ class NodeService
         $tag->setAssetCollections($assetCollections);
 
         $this->tagRepository->add($tag);
-        $this->persistenceManager->whitelistObject($tag);
+        $this->persistenceManager->allowObject($tag);
 
         return $tag;
     }
