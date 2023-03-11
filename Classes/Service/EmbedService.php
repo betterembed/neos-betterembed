@@ -2,6 +2,7 @@
 
 namespace BetterEmbed\NeosEmbed\Service;
 
+use BetterEmbed\NeosEmbed\Domain\Repository\BetterEmbedRepository;
 use GuzzleHttp\Exception\GuzzleException;
 use Neos\ContentRepository\Domain\Model\NodeType;
 use Neos\ContentRepository\Exception\NodeException;
@@ -144,7 +145,7 @@ class EmbedService
     public function getByUrl(string $url, $createIfNotFound = false)
     {
         /** @var NodeInterface $record */
-        $node = $this->nodeService->findRecordByUrl($this->context->getRootNode(), $url);
+        $node = $this->nodeService->findRecordByUrl($this->context->getNode('/' . BetterEmbedRepository::BETTER_EMBED_ROOT_NODE_NAME), $url);
 
         if ($node == null && $createIfNotFound) {
 
