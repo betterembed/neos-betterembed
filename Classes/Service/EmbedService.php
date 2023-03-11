@@ -201,6 +201,15 @@ class EmbedService
 
         $image = null;
         if (filter_var($assetOriginal, FILTER_VALIDATE_URL)) {
+            // If the $asset is the same as $extension then there was no matching extension in this case use the mime type defined by hosting server
+            if ($asset === $extension) {
+                $client = new Client();
+                $mimeType = $client->head($asset)->getHeader('Content-Type')[0];
+                $extension = str_replace('image/', '', str_replace('x-', '', $mimeType)); // account for image/png and image/x-png mimeTypes
+            } else {
+                $mimeType = 'image/' . $extension;
+            }
+            
             $resource = $this->resourceManager->importResource($assetOriginal);
             $tags = new ArrayCollection([$this->nodeService->findOrCreateBetterEmbedTag($record->getItemType(), $this->assetCollections)]);
 
@@ -209,7 +218,7 @@ class EmbedService
             if ($image === null) {
                 $image = new Image($resource);
                 $image->getResource()->setFilename(md5($record->getUrl()) . '.' . $extension);
-                $image->getResource()->setMediaType('image/' . $extension);
+                $image->getResource()->setMediaType($mimeType);
                 $image->setAssetCollections($this->assetCollections);
                 $image->setTags($tags);
                 $this->assetRepository->add($image);
