@@ -8,22 +8,17 @@
     "url": "git://github.com/betterembed/neos-betterembed.git"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@rollup/plugin-babel": "^5.2.2",
-    "autoprefixer": "^9.7.4",
-    "cssnano": "^4.1.10",
-    "join-array": "^1.1.2",
-    "postcss-banner": "^3.0.1",
-    "postcss-cli": "^7.1.0",
-    "rollup": "^2.1.0",
-    "rollup-plugin-terser": "^5.3.0",
-    "sass": "^1.26.3"
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
+    "esbuild": "^0.18.11",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "sass": "^1.63.6"
   },
   "scripts": {
-    "js": "rollup --config",
+    "js": "esbuild Resources/Private/Assets/Main.js --bundle --sourcemap --minify --outfile=Resources/Public/Main.js",
     "css:scss": "sass --embed-sources Resources/Private/Assets:Resources/Public",
-    "css:postcss": "postcss Resources/Public/*.css --map --replace",
+    "css:postcss": "postcss Resources/Public/*.css --map --replace --use autoprefixer cssnano",
     "css": "yarn css:scss && yarn css:postcss",
     "build": "rm -rf Resources/Public/*;yarn css | yarn js",
     "start": "yarn build"
