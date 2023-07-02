@@ -100,7 +100,10 @@ class EmbedService
      */
     public function nodeUpdated(NodeInterface $node): void
     {
-
+        $this->context = $this->contextFactory->create([
+            'workspaceName' => 'live',
+            'dimensions' => $node->getDimensions()
+        ]);
         if ($node->getNodeType()->isOfType('BetterEmbed.NeosEmbed:Mixin.Item')) {
             $url = $node->getProperty('url');
 
