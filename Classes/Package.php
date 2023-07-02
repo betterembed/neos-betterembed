@@ -1,4 +1,5 @@
 <?php
+
 namespace BetterEmbed\NeosEmbed;
 
 use Neos\Flow\Core\Bootstrap;

@@ -1,4 +1,5 @@
 <?php
+
 namespace BetterEmbed\NeosEmbed\Service;
 
 use BetterEmbed\NeosEmbed\Domain\Repository\BetterEmbedRepository;
@@ -13,7 +14,6 @@ use Neos\ContentRepository\Domain\Service\NodeTypeManager;
 use Neos\Eel\Exception;
 use Neos\Eel\FlowQuery\FlowQuery;
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Persistence\Doctrine\QueryResult;
 use Neos\Flow\Persistence\Exception\IllegalObjectTypeException;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
 use Neos\Media\Domain\Model\AssetCollection;
@@ -116,9 +116,9 @@ class NodeService
     }
 
     /**
-     * @param string $title 
-     * @return AssetCollection 
-     * @throws IllegalObjectTypeException 
+     * @param string $title
+     * @return AssetCollection
+     * @throws IllegalObjectTypeException
      */
     public function findOrCreateBetterEmbedAssetCollection(string $title = self::ASSET_COLLECTION_TITLE): AssetCollection
     {
@@ -136,9 +136,9 @@ class NodeService
     }
 
     /**
-     * @param string $label 
-     * @return Tag 
-     * @throws IllegalObjectTypeException 
+     * @param string $label
+     * @return Tag
+     * @throws IllegalObjectTypeException
      */
     public function findOrCreateBetterEmbedTag(string $label, ArrayCollection $assetCollections): Tag
     {
@@ -153,20 +153,20 @@ class NodeService
         }
 
         /** @var AssetCollection $collection */
-        foreach($tag->getAssetCollections() as $collection) { //check if tag has the accoring asset collection assigned
+        foreach ($tag->getAssetCollections() as $collection) { //check if tag has the accoring asset collection assigned
             if ($collection->getTitle() === self::ASSET_COLLECTION_TITLE) {
                 return $tag;
             }
-        } 
-        
+        }
+
         return $this->createTag($label, $assetCollections); // create tag anyway
     }
 
     /**
-     * @param string $label 
-     * @param ArrayCollection $assetCollections 
-     * @return Tag 
-     * @throws IllegalObjectTypeException 
+     * @param string $label
+     * @param ArrayCollection $assetCollections
+     * @return Tag
+     * @throws IllegalObjectTypeException
      */
     private function createTag(string $label, ArrayCollection $assetCollections): Tag
     {
@@ -178,14 +178,15 @@ class NodeService
 
         return $tag;
     }
- 
+
     /**
      * @param NodeInterface $node
      * @param string $url
      * @return \Traversable
      * @throws Exception
      */
-    public function findRecordByUrl(NodeInterface $node, string $url) {
+    public function findRecordByUrl(NodeInterface $node, string $url)
+    {
 
         $fq = new FlowQuery([$node]);
 
@@ -195,13 +196,12 @@ class NodeService
         return $result;
     }
 
-    public function removeEmbedNode(NodeInterface $node) {
+    public function removeEmbedNode(NodeInterface $node)
+    {
         $node->setRemoved(true);
         if ($node->isRemoved()) {
             $this->nodeDataRepository->remove($node);
             return;
         }
     }
-
-
 }

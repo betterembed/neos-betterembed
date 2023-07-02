@@ -1,4 +1,5 @@
 <?php
+
 namespace BetterEmbed\NeosEmbed\Domain\Repository;
 
 use Neos\Flow\Annotations as Flow;

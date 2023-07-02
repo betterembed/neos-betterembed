@@ -1,4 +1,5 @@
 <?php
+
 namespace BetterEmbed\NeosEmbed\Aspect\Runtime;
 
 use Neos\Flow\Annotations as Flow;

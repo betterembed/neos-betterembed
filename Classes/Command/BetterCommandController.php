@@ -1,4 +1,5 @@
 <?php
+
 namespace BetterEmbed\NeosEmbed\Command;
 
 use Neos\ContentRepository\Domain\Model\NodeInterface;
@@ -24,11 +25,12 @@ class BetterCommandController extends CommandController
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Neos\ContentRepository\Exception\NodeTypeNotFoundException
      */
-    public function embedCommand(string $url ) {
+    public function embedCommand(string $url)
+    {
 
         /** @var NodeInterface $node */
         $node = $this->embedService->getByUrl($url, true);
 
-        $this->outputLine($node ? json_encode($node->getProperties()): 'No corresponding node found');
+        $this->outputLine($node ? json_encode($node->getProperties()) : 'No corresponding node found');
     }
 }

@@ -1,7 +1,9 @@
 <?php
+
 namespace BetterEmbed\NeosEmbed\Domain\Dto;
 
-class BetterEmbedRecord {
+class BetterEmbedRecord
+{
 
     /**
      * @var string
@@ -276,4 +278,3 @@ class BetterEmbedRecord {
         $this->publishedAt = $publishedAt;
     }
 }
-

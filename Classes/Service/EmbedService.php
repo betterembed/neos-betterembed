@@ -127,7 +127,7 @@ class EmbedService
         if ($node->getNodeType()->isOfType('BetterEmbed.NeosEmbed:Mixin.Item')) {
             $url = $node->getProperty('url');
 
-            if (!empty($url) && count($this->nodeSearchService->findByProperties(['url' => str_replace('"','',json_encode($url))], ['BetterEmbed.NeosEmbed:Mixin.Item'], $this->context)) <= 1) {
+            if (!empty($url) && count($this->nodeSearchService->findByProperties(['url' => str_replace('"', '', json_encode($url))], ['BetterEmbed.NeosEmbed:Mixin.Item'], $this->context)) <= 1) {
                 $recordNode = $this->getByUrl($url);
                 if ($recordNode) {
                     $this->nodeService->removeEmbedNode($recordNode);
@@ -152,13 +152,13 @@ class EmbedService
 
         if ($node == null && $createIfNotFound) {
 
-            $urlParts = parse_url( $url );
+            $urlParts = parse_url($url);
 
-            if(strstr($urlParts['host'], 'facebook')) {
+            if (strstr($urlParts['host'], 'facebook')) {
                 throw new Exception('Facebook URLs are not supported due GDPR consent gateway protection.');
             }
 
-            if(strstr($urlParts['host'], 'instagram')) {
+            if (strstr($urlParts['host'], 'instagram')) {
                 throw new Exception('Instagram URLs are not supported due GDPR consent gateway protection.');
             }
 
@@ -213,7 +213,7 @@ class EmbedService
             } else {
                 $mimeType = 'image/' . $extension;
             }
-            
+
             $resource = $this->resourceManager->importResource($assetOriginal);
             $tags = new ArrayCollection([$this->nodeService->findOrCreateBetterEmbedTag($record->getItemType(), $this->assetCollections)]);
 

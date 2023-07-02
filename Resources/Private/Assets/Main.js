@@ -6,10 +6,10 @@ const REMOTE_VISIBLE_CLASS = `is-${NAMESPACE}-remote-visible`;
 const SHOW_MESSAGE_CLASS = `is-${NAMESPACE}-dialog-visible`;
 const CONFIRMED_MESSAGE_CLASS = `is-${NAMESPACE}-confirmed`;
 
-const getContainer = element => element.closest(`.js-${NAMESPACE}`);
-const getEmbedElement = container => container.querySelector(`.js-${NAMESPACE}-embed`);
+const getContainer = (element) => element.closest(`.js-${NAMESPACE}`);
+const getEmbedElement = (container) => container.querySelector(`.js-${NAMESPACE}-embed`);
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', (event) => {
     const TARGET = event.target;
 
     if (TARGET.classList.contains(SWITCH_CLASS)) {
@@ -38,7 +38,7 @@ document.addEventListener('click', function(event) {
             EMBED_ELEMENT.innerHTML = JSON.parse(CONTAINER.dataset.embedHtml);
 
             // Run trough every script and active it
-            Array.from(EMBED_ELEMENT.querySelectorAll('script')).forEach(scriptTag => {
+            Array.from(EMBED_ELEMENT.querySelectorAll('script')).forEach((scriptTag) => {
                 if (scriptTag.src) {
                     const TAG = document.createElement('script');
                     TAG.src = scriptTag.src;
