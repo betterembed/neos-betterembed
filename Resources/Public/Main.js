@@ -1,8 +1,2 @@
-/*!
- * BetterEmbed.NeosEmbed - created by David Spiola and Jon Uhlmann
- * @link https://github.com/betterembed/neos-betterembed
- * Copyright 2020 David Spiola and Jon Uhlmann
- * Licensed under GPL-3.0-or-later
- */
-!function(){"use strict";var e="betterembed",c="js-".concat(e,"-switch"),t="js-".concat(e,"-close"),s="js-".concat(e,"-load-remote"),n="is-".concat(e,"-remote-visible"),a="is-".concat(e,"-dialog-visible"),i="is-".concat(e,"-confirmed"),o=function(c){return c.closest(".js-".concat(e))};document.addEventListener("click",(function(r){var l=r.target;if(l.classList.contains(c)){var d=o(l).classList,m=d.contains(i);d.toggle(m?n:a)}l.classList.contains(t)&&o(l).classList.remove(a);if(l.classList.contains(s)){var u=o(l),v=u.classList,f=u.querySelector(".js-".concat(e,"-embed"));f.innerHTML||(f.innerHTML=JSON.parse(u.dataset.embedHtml),Array.from(f.querySelectorAll("script")).forEach((function(e){if(e.src){var c=document.createElement("script");c.src=e.src,document.head.appendChild(c)}else window.eval(e.innerHTML)}))),v.add(n),v.add(i),v.remove(a)}}))}();
+(()=>{var s="betterembed",l=`js-${s}-switch`,A=`js-${s}-close`,d=`js-${s}-load-remote`,L=`is-${s}-remote-visible`,E=`is-${s}-dialog-visible`,a=`is-${s}-confirmed`,S=n=>n.closest(`.js-${s}`),C=n=>n.querySelector(`.js-${s}-embed`);document.addEventListener("click",function(n){let e=n.target;if(e.classList.contains(l)){let t=S(e).classList,o=t.contains(a);t.toggle(o?L:E)}if(e.classList.contains(A)&&S(e).classList.remove(E),e.classList.contains(d)){let c=S(e),t=c.classList,o=C(c);o.innerHTML||(o.innerHTML=JSON.parse(c.dataset.embedHtml),Array.from(o.querySelectorAll("script")).forEach(i=>{if(i.src){let r=document.createElement("script");r.src=i.src,document.head.appendChild(r)}else window.eval(i.innerHTML)})),t.add(L),t.add(a),t.remove(E)}});})();
 //# sourceMappingURL=Main.js.map
